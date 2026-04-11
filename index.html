@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saad Khan | Product &amp; Platform Portfolio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { colors: {
+        "primary":"#005da3","primary-dim":"#00518f","primary-fixed":"#4ea4ff",
+        "primary-container":"#4ea4ff","on-primary":"#edf3ff","on-primary-container":"#002444",
+        "secondary":"#00647b","secondary-fixed":"#7edeff","secondary-container":"#7edeff",
+        "on-secondary":"#e1f6ff","on-secondary-container":"#004e61",
+        "surface":"#f5f7f9","surface-container":"#e5e9eb","surface-container-low":"#eef1f3",
+        "surface-container-lowest":"#ffffff","surface-container-high":"#dfe3e6",
+        "on-surface":"#2c2f31","on-surface-variant":"#595c5e","inverse-surface":"#0b0f10",
+        "background":"#f5f7f9","outline":"#747779","outline-variant":"#abadaf"
+      }, borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},
+      fontFamily:{"headline":["Plus Jakarta Sans"],"body":["Manrope"],"label":["Manrope"]}}}
+    }
+  </script>
+  <style>
+    body{font-family:'Manrope',sans-serif} h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}
+    .glass-panel{background:rgba(255,255,255,0.45);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+    .timeline-scroll-container::-webkit-scrollbar{display:none}
+    .timeline-scroll-container{-ms-overflow-style:none;scrollbar-width:none}
+    @keyframes rise-fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .milestone-card{opacity:0} .milestone-card.animated{animation:rise-fade 0.5s ease-out forwards}
+    @keyframes modal-in{from{opacity:0;transform:scale(0.95) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    @keyframes modal-out{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.96) translateY(6px)}}
+    .modal-enter{animation:modal-in 0.28s cubic-bezier(0.34,1.3,0.64,1) forwards}
+    .modal-exit{animation:modal-out 0.18s ease-in forwards}
+    @keyframes backdrop-in{from{opacity:0}to{opacity:1}} @keyframes backdrop-out{from{opacity:1}to{opacity:0}}
+    .backdrop-enter{animation:backdrop-in 0.2s ease-out forwards}
+    .backdrop-exit{animation:backdrop-out 0.18s ease-in forwards}
+    .node-dot{transition:transform 0.25s ease,box-shadow 0.25s ease}
+    .node-active{box-shadow:0 0 0 7px rgba(0,93,163,0.22),0 0 0 3px rgba(0,93,163,0.5);transform:scale(1.6) !important}
+    .milestone-card:hover .node-dot{transform:scale(1.45)}
+    .card-inner{transition:transform 0.3s ease,box-shadow 0.3s ease}
+    .milestone-card:hover .card-inner{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,93,163,0.12)}
+  </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- MODAL -->
+<div id="role-modal" class="fixed inset-0 z-[200] hidden" role="dialog" aria-modal="true">
+  <div id="modal-backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm cursor-pointer"></div>
+  <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+    <div id="modal-panel" class="relative pointer-events-auto glass-panel border border-white/30 shadow-2xl rounded-2xl w-full max-w-2xl max-h-[88vh] overflow-y-auto">
+      <button id="modal-close" class="sticky top-4 float-right mr-4 w-9 h-9 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors z-10">
+        <span class="material-symbols-outlined text-on-surface-variant" style="font-size:18px">close</span>
+      </button>
+      <div id="modal-content" class="p-8 pt-6 clear-both"></div>
+    </div>
+  </div>
+</div>
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,93,163,0.06)]">
+  <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+    <span class="text-2xl font-bold tracking-tighter text-slate-900 font-headline">SK.</span>
+    <div class="hidden md:flex items-center space-x-8 font-label text-sm tracking-wide">
+      <a href="#" class="text-blue-600 font-bold border-b-2 border-blue-600 pb-1 hover:text-blue-500 transition-colors">Home</a>
+      <a href="#trajectory" class="text-slate-600 font-medium hover:text-blue-500 transition-colors">Career</a>
+      <a href="#stack" class="text-slate-600 font-medium hover:text-blue-500 transition-colors">Stack</a>
+      <a href="#case-studies" class="text-slate-600 font-medium hover:text-blue-500 transition-colors">Case Studies</a>
+    </div>
+    <a href="mailto:saadmk14@gmail.com" class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-full font-semibold text-sm hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-primary/20">Connect</a>
+  </div>
+</nav>
+<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+<!-- HERO -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
+  <div class="lg:col-span-7 space-y-8">
+    <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase">Open to PM Roles · Bay Area</div>
+    <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.1]">Saad Khan.<br><span class="text-primary">Product &amp; Platform.</span></h1>
+    <p class="text-xl md:text-2xl text-on-surface-variant font-light max-w-2xl leading-relaxed">10 years inside Google's advertising ecosystem. Shipped at 1M+ user scale. Built GenAI products, $20M+ revenue growth, and enterprise platforms from zero.</p>
+    <div class="flex flex-wrap gap-4 pt-4">
+      <a href="#trajectory" class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-primary/30 transition-all">View Portfolio</a>
+      <a href="assets/saad-khan-resume.pdf" class="glass-panel border border-white/20 text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all">Download CV</a>
+    </div>
+  </div>
+  <div class="lg:col-span-5 relative">
+    <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary-fixed/20 blur-3xl -z-10 rounded-full"></div>
+    <div class="relative p-2 rounded-full glass-panel border border-white/40 shadow-2xl overflow-hidden aspect-square flex items-center justify-center">
+      <img src="assets/images/headshot.jpg" alt="Saad Khan" class="w-full h-full object-cover rounded-full border-2 border-primary-fixed" onerror="this.src='https://ui-avatars.com/api/?name=Saad+Khan&size=500&background=005da3&color=edf3ff&bold=true'"/>
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 glass-panel px-6 py-3 rounded-xl border border-white/30 shadow-lg whitespace-nowrap">
+        <span class="text-sm font-bold text-primary flex items-center gap-2"><span class="material-symbols-outlined text-base">verified</span>Ex-Google · Senior PM</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- STRATEGIC TRAJECTORY -->
+<section id="trajectory" class="mb-24 relative overflow-hidden py-12 px-2 bg-surface-container-low rounded-2xl border border-outline-variant/10">
+  <div class="max-w-4xl mx-auto mb-12 text-center">
+    <h2 class="text-4xl font-extrabold tracking-tight mb-4">Strategic Trajectory</h2>
+    <p class="text-on-surface-variant">A decade scaling products across industry giants and startups. <span class="text-primary font-semibold">Click any milestone to explore the role.</span></p>
+  </div>
+  <div class="relative timeline-scroll-container overflow-x-auto pb-12 pt-20" id="timeline-container">
+    <div class="absolute top-[132px] left-0 right-0 h-px bg-outline-variant/20 mx-12"></div>
+    <div id="timeline-line" class="absolute top-[132px] left-12 h-px bg-gradient-to-r from-primary via-primary-fixed to-secondary-fixed" style="width:0;transition:none;"></div>
+    <div class="flex justify-between items-start min-w-[1100px] px-12 relative z-10" id="milestone-row"></div>
+  </div>
+</section>
+<!-- CASE STUDIES BENTO -->
+<section id="case-studies" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+  <div class="bg-surface-container-lowest rounded-2xl p-8 flex flex-col justify-between shadow-[0_20px_40px_rgba(0,93,163,0.06)] border border-outline-variant/10 group">
+    <div>
+      <div class="w-12 h-12 bg-secondary-container rounded-xl flex items-center justify-center mb-6 text-on-secondary-container"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">psychology</span></div>
+      <h3 class="text-2xl font-bold mb-4">AI &amp; ML Integration</h3>
+      <p class="text-on-surface-variant text-sm leading-relaxed mb-6">GenAI consumer products at 1M+ scale, enterprise RTB infrastructure, and AI tooling that changed how teams work.</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <span class="px-3 py-1 bg-surface-container rounded-full text-xs font-bold text-on-surface-variant group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">GenAI Products</span>
+      <span class="px-3 py-1 bg-surface-container rounded-full text-xs font-bold text-on-surface-variant group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">RTB Infrastructure</span>
+      <span class="px-3 py-1 bg-surface-container rounded-full text-xs font-bold text-on-surface-variant group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">Ads Data Hub</span>
+    </div>
+  </div>
+  <div class="md:col-span-2 bg-inverse-surface rounded-2xl relative overflow-hidden group min-h-[350px]">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=60" alt="EV Advertiser" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+    <div class="relative h-full p-8 flex flex-col justify-end text-white min-h-[350px]">
+      <div class="text-secondary-fixed text-xs font-bold tracking-[0.2em] uppercase mb-2">Featured Case Study</div>
+      <h3 class="text-3xl font-bold mb-4 tracking-tight leading-tight">The $20K to $20M EV Advertiser Win</h3>
+      <p class="text-slate-300 text-sm mb-6 max-w-xl">A strategic platform overhaul transforming a niche product into a multi-million dollar revenue engine via DV360 programmatic strategy.</p>
+      <a href="case-studies/ev-advertiser.html" class="flex items-center gap-2 text-white font-bold hover:gap-3 transition-all w-fit">Read Case Study<span class="material-symbols-outlined">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+<!-- PLATFORM STACK -->
+<section id="stack" class="bg-surface-container-low rounded-2xl p-12 relative overflow-hidden">
+  <div class="max-w-3xl">
+    <h2 class="text-4xl font-extrabold tracking-tight mb-6">The Platform Stack</h2>
+    <p class="text-on-surface-variant text-lg mb-10 leading-relaxed">Mastering the tools that power the modern digital economy — from programmatic ad engines to enterprise-scale AI implementations.</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4">
+      <div class="space-y-3"><div class="font-bold text-sm uppercase tracking-widest text-on-surface">Cloud &amp; Infra</div><ul class="text-sm text-on-surface-variant space-y-2"><li>GCP / AWS</li><li>Kubernetes</li><li>Data Lakes &amp; SQL</li></ul></div>
+      <div class="space-y-3"><div class="font-bold text-sm uppercase tracking-widest text-on-surface">Ad Tech</div><ul class="text-sm text-on-surface-variant space-y-2"><li>DV360 / CM360</li><li>RTB &amp; DSP/SSP</li><li>Ads Data Hub</li></ul></div>
+      <div class="space-y-3"><div class="font-bold text-sm uppercase tracking-widest text-on-surface">Product &amp; AI</div><ul class="text-sm text-on-surface-variant space-y-2"><li>GenAI / LLMs</li><li>Product Studio</li><li>PRD &amp; Roadmapping</li></ul></div>
+      <div class="space-y-3"><div class="font-bold text-sm uppercase tracking-widest text-on-surface">Leadership</div><ul class="text-sm text-on-surface-variant space-y-2"><li>OKR Frameworks</li><li>Cross-functional</li><li>P&amp;L Management</li></ul></div>
+    </div>
+  </div>
+  <div class="absolute right-0 top-0 h-full w-1/3 hidden lg:flex items-center justify-center opacity-30 pointer-events-none">
+    <svg viewBox="0 0 200 200" class="w-full h-full"><circle cx="100" cy="100" r="80" fill="none" stroke="#abadaf" stroke-width="0.5"/><circle cx="100" cy="100" r="60" fill="none" stroke="#abadaf" stroke-width="0.5"/><circle cx="100" cy="100" r="40" fill="none" stroke="#abadaf" stroke-width="0.5"/><line x1="20" y1="100" x2="180" y2="100" stroke="#abadaf" stroke-width="0.5"/><line x1="100" y1="20" x2="100" y2="180" stroke="#abadaf" stroke-width="0.5"/><path d="M100 20 L160 140 L40 140 Z" fill="rgba(0,93,163,0.1)" stroke="#005da3" stroke-width="1.5"/></svg>
+  </div>
+</section>
+</main>
+<footer class="bg-slate-50 border-t border-outline-variant/10 mt-20">
+  <div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 max-w-7xl mx-auto space-y-6 md:space-y-0">
+    <div class="flex flex-col items-center md:items-start space-y-2">
+      <span class="font-bold text-slate-900 font-headline text-lg">Saad Khan</span>
+      <span class="text-slate-500 font-label text-sm">&#169; 2025 Product &amp; Platform Portfolio</span>
+    </div>
+    <div class="flex space-x-8 font-label text-sm tracking-wide">
+      <a href="https://www.linkedin.com/in/saad-khan-ii" target="_blank" class="text-slate-500 hover:text-primary transition-colors">LinkedIn</a>
+      <a href="assets/saad-khan-resume.pdf" class="text-slate-500 hover:text-primary transition-colors">Resume</a>
+      <a href="mailto:saadmk14@gmail.com" class="text-slate-500 hover:text-primary transition-colors">Email</a>
+    </div>
+  </div>
+</footer>
+<script>
+const ROLES=[
+  {id:"exponential",company:"Exponential",role:"Associate Account Manager",period:"Jun 2014 – Mar 2016",tag:"APAC & MEA Markets",
+   description:"Managed advertiser accounts across high-growth markets in the Middle East, Hong Kong, Indonesia, and Thailand — building the commercial and analytical foundations for a decade-long career in AdTech.",
+   achievements:["Managed full campaign lifecycle across CPM, CPC, and CPA models for APAC and MEA advertiser accounts","Collaborated with sales teams to strengthen client proposals and pitch materials for new business development","Developed regional industry case studies that supported and accelerated new business across APAC and MEA"],
+   caseStudies:[]},
+  {id:"google-tc",company:"Google",role:"Technical Consultant",period:"Mar 2016 – Oct 2018",tag:"DoubleClick & RTB",
+   description:"Joined Google’s DoubleClick team at the inflection point of programmatic advertising — becoming the primary bridge between enterprise clients, trading desks, and product engineering across CM360 and DV360.",
+   achievements:["Managed DoubleClick Campaign Manager (CM360) and Bid Manager (DV360) integrations for agency and direct enterprise clients","Provided C-suite consultation on RTB infrastructure, OpenRTB integrations, and DSP/SSP ecosystem dynamics at agency trading desks","Contributed structured product feedback to the DoubleClick product team, influencing buy-side tooling feature prioritization"],
+   caseStudies:[]},
+  {id:"google-spa",company:"Google",role:"Senior Product Analyst",period:"Oct 2018 – Apr 2022",tag:"GMP & Analytics",
+   description:"Evolved into a product-facing analytical role — building data systems and recommendation frameworks that translated platform signals into roadmap decisions across APAC’s most complex enterprise advertisers.",
+   achievements:["Built data-driven recommendation systems using Google Analytics, GMP, and Ads Data Hub — outputs fed directly into structured product briefs","Designed programmatic measurement frameworks adopted as APAC-wide best practice and shared across the organization","Led end-to-end GMP technical implementation for enterprise clients, bridging client teams, gTech, and product stakeholders"],
+   caseStudies:[]},
+  {id:"google-sam",company:"Google",role:"Senior Account Manager",period:"May 2022 – Nov 2024",tag:"$20M+ Portfolio",
+   description:"Took ownership of a $20M+ enterprise advertiser portfolio and drove 30% YoY growth through programmatic strategy, attribution modeling, and cross-channel frameworks that became team-wide sales playbooks.",
+   achievements:["Managed $20M+ SMB client portfolio delivering 30% YoY revenue growth via Google Ads optimization and audience segmentation","Built measurement and optimization frameworks for programmatic buying — adopted as internal sales enablement content across the team","Drove conversion of significant offline advertiser budgets to digital channels through attribution modeling and local market data"],
+   caseStudies:[{title:"The $20K to $20M EV Advertiser Win",href:"case-studies/ev-advertiser.html",tag:"Programmatic · Growth"}]},
+  {id:"google-spm",company:"Google",role:"Senior Product Manager",period:"Nov 2024 – Oct 2025",tag:"GenAI & Product Studio",
+   description:"Crossed into full product management at Google — owning roadmap, commercial growth strategy, and cross-functional execution across GenAI consumer products, Chrome, and the Google Merchant Center ecosystem.",
+   achievements:["Drove acquisition strategy for a Character AI product that scaled to 10M+ users, becoming the #2 GenAI unified app worldwide — subsequently acquired by Google","Shipped Chrome Notifications features delivering +8pp CTR and +10pp engagement across 1M+ users, owning product roadmap and growth strategy simultaneously","Built an AI email assistant saving 4 hrs/week per person — scaled from a 50-person pilot to 3,000+ internal Google users"],
+   caseStudies:[{title:"Chrome Notifications: +8pp CTR at 1M+ Scale",href:"case-studies/chrome-notifications.html",tag:"Growth · GenAI"},{title:"AI Email Assistant: 4 hrs/week Saved at Scale",href:"case-studies/ai-email-assistant.html",tag:"Internal Tooling · AI"}]},
+  {id:"tellysynco",company:"TellySynco",role:"Founder & Head of Product",period:"Nov 2025 – Present",tag:"0→1 Startup",
+   description:"Building TellySynco — a tvOS-first AI-native family coordination app that transforms Apple TV into a smart family command center. Targeting 35M+ underserved US households.",
+   achievements:["Validated demand through 50+ parent UXR interviews; scoping real-time WebSocket sync and OAuth integrations with Google Calendar, Outlook, and iCloud","Leading a distributed team of 4 across design, iOS engineering, and program management spanning US and India","Identified the tvOS market gap: ~18,000 apps vs. 1.9M on iOS — built the $10/mo household subscription model to capture dual-income families with school-age children"],
+   caseStudies:[{title:"TellySynco: Building a TV-First Family OS",href:"case-studies/tellysynco.html",tag:"0→1 · tvOS · AI"}]}
+];
+function renderTimeline(){
+  document.getElementById("milestone-row").innerHTML=ROLES.map((r,i)=>`
+    <div class="milestone-card flex flex-col items-center group w-44 text-center cursor-pointer select-none" style="animation-delay:${i*150}ms" onclick="openModal('${r.id}')">
+      <div class="relative mb-8"><div class="node-dot w-4 h-4 bg-primary rounded-full relative z-20" id="node-${r.id}"></div><div class="absolute inset-0 w-4 h-4 bg-primary/35 rounded-full animate-ping z-10"></div></div>
+      <div class="card-inner glass-panel border border-white/40 p-4 rounded-xl shadow-sm group-hover:border-primary/25 -mt-2 w-full">
+        <div class="text-xs font-bold text-primary-dim uppercase tracking-widest mb-1">${r.company}</div>
+        <div class="text-sm font-extrabold text-on-surface mb-2 leading-snug">${r.role}</div>
+        <div class="text-[10px] leading-tight text-on-secondary-container font-bold bg-secondary-container/40 py-1 px-2 rounded-full inline-block">${r.tag}</div>
+      </div>
+    </div>`).join("");
+}
+let activeId=null;
+function openModal(id){
+  const r=ROLES.find(x=>x.id===id);if(!r)return;
+  if(activeId)document.getElementById("node-"+activeId)?.classList.remove("node-active");
+  activeId=id;document.getElementById("node-"+id)?.classList.add("node-active");
+  const cs=r.caseStudies.length?`<div class="mt-8 pt-6 border-t border-outline-variant/20"><div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">Case Studies</div><div class="space-y-3">${r.caseStudies.map(c=>`<a href="${c.href}" class="flex items-center justify-between p-4 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors group/cs border border-outline-variant/10"><div><div class="font-bold text-on-surface text-sm group-hover/cs:text-primary transition-colors">${c.title}</div><div class="text-xs text-on-surface-variant mt-0.5">${c.tag}</div></div><span class="material-symbols-outlined text-on-surface-variant group-hover/cs:text-primary group-hover/cs:translate-x-1 transition-all text-xl">arrow_forward</span></a>`).join("")}</div></div>`:`<div class="mt-8 pt-6 border-t border-outline-variant/20"><div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3">Case Studies</div><div class="text-sm text-on-surface-variant italic">Case studies for this role coming soon.</div></div>`;
+  document.getElementById("modal-content").innerHTML=`<div class="mb-6"><div class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase mb-4">${r.tag}</div><div class="text-xs text-on-surface-variant font-semibold mb-1 tracking-wide">${r.period}</div><h2 class="text-2xl font-extrabold text-on-surface mb-1">${r.role}</h2><div class="text-lg font-semibold text-primary mb-5">${r.company}</div><p class="text-on-surface-variant leading-relaxed text-sm">${r.description}</p></div><div><div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">Key Achievements</div><ul class="space-y-3">${r.achievements.map(a=>`<li class="flex gap-3 text-sm text-on-surface leading-relaxed"><span class="material-symbols-outlined text-primary shrink-0" style="font-size:18px;margin-top:2px">check_circle</span><span>${a}</span></li>`).join("")}</ul></div>${cs}`;
+  const modal=document.getElementById("role-modal"),panel=document.getElementById("modal-panel"),bd=document.getElementById("modal-backdrop");
+  modal.classList.remove("hidden");void panel.offsetWidth;
+  panel.className=panel.className.replace(/modal-exit/g,"");panel.classList.add("modal-enter");
+  bd.classList.add("backdrop-enter");document.body.style.overflow="hidden";
+}
+function closeModal(){
+  const panel=document.getElementById("modal-panel"),bd=document.getElementById("modal-backdrop");
+  panel.classList.remove("modal-enter");panel.classList.add("modal-exit");
+  bd.classList.remove("backdrop-enter");bd.classList.add("backdrop-exit");
+  setTimeout(()=>{document.getElementById("role-modal").classList.add("hidden");panel.classList.remove("modal-exit");bd.classList.remove("backdrop-exit");document.body.style.overflow="";if(activeId){document.getElementById("node-"+activeId)?.classList.remove("node-active");activeId=null;}},200);
+}
+document.getElementById("modal-close").addEventListener("click",closeModal);
+document.getElementById("modal-backdrop").addEventListener("click",closeModal);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+function initAnimations(){
+  const section=document.getElementById("trajectory"),line=document.getElementById("timeline-line"),cards=document.querySelectorAll(".milestone-card");
+  let fired=false;
+  new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting&&!fired){fired=true;
+      setTimeout(()=>{line.style.transition="width 1.9s cubic-bezier(0.4,0,0.2,1)";line.style.width="calc(100% - 6rem)";},100);
+      cards.forEach((c,i)=>setTimeout(()=>c.classList.add("animated"),250+i*160));
+    }},{threshold:0.2}).observe(section);
+}
+document.addEventListener("DOMContentLoaded",()=>{renderTimeline();initAnimations();});
+</script>
+</body></html>
