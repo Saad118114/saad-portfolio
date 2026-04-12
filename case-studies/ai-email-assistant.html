@@ -24,157 +24,90 @@
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Problem</h2><p class="text-on-surface-variant leading-relaxed">Google's enterprise sales team was spending hours each week crafting responses to repetitive client queries. The information existed internally — but siloed across docs, slides, and email threads. Could an AI assistant bridge that gap fast enough to actually change how a 50-person team worked?</p><div class="mt-6 p-4 rounded-xl bg-secondary-container/30 border-l-4 border-primary"><p class="text-sm text-on-surface-variant italic font-medium">Full case study content coming soon. Prompt Claude with the details and this page updates instantly.</p></div></div>
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Approach</h2>
 <p class="text-on-surface-variant leading-relaxed mb-8">The system was architected as a fully autonomous Gmail agent. On every inbound email, the agent reasons over an internal knowledge base, drafts a contextual reply, sends it, and logs the interaction — all without human intervention.</p>
-<div class="w-full overflow-x-auto" id="agent-diagram">
-<div style="min-width:700px;background:linear-gradient(135deg,#f0f5ff 0%,#e8f0fe 100%);border-radius:20px;padding:40px 32px 32px;border:1px solid rgba(0,93,163,0.12);position:relative;overflow:hidden;">
-
-  <!-- subtle grid bg -->
-  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,93,163,0.06) 1px,transparent 1px);background-size:28px 28px;border-radius:20px;pointer-events:none;"></div>
-
-  <!-- TOP ROW: 3 main nodes -->
-  <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:48px;position:relative;z-index:2;">
-
-    <!-- Email Trigger -->
-    <div id="dn1" class="dnode" style="opacity:0;transform:translateY(10px);transition:all 0.4s ease;">
-      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 20px rgba(0,93,163,0.08);min-width:160px;">
-        <div style="width:36px;height:36px;background:#EA4335;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </div>
-        <div>
-          <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:13px;font-weight:700;color:#1a2233;line-height:1.2;">Email Received</div>
-          <div style="font-family:Manrope,sans-serif;font-size:10px;color:#6b7a99;margin-top:2px;font-weight:600;">Gmail Trigger</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Arrow 1 -->
-    <div id="da1" class="darrow" style="opacity:0;transition:opacity 0.3s ease;display:flex;align-items:center;padding:0 8px;">
-      <div style="width:60px;height:2px;background:linear-gradient(90deg,#005da3,#4ea4ff);position:relative;">
-        <div style="position:absolute;right:-6px;top:-4px;width:0;height:0;border-left:8px solid #4ea4ff;border-top:5px solid transparent;border-bottom:5px solid transparent;"></div>
-      </div>
-    </div>
-
-    <!-- Gmail Agent (central hero) -->
-    <div id="dn2" class="dnode" style="opacity:0;transform:translateY(10px);transition:all 0.4s ease;">
-      <div style="background:linear-gradient(135deg,#005da3,#0076cc);border-radius:16px;padding:16px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 8px 32px rgba(0,93,163,0.3);min-width:180px;position:relative;">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-        </div>
-        <div>
-          <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">gmail_agent</div>
-          <div style="font-family:Manrope,sans-serif;font-size:10px;color:rgba(255,255,255,0.7);margin-top:3px;font-weight:600;">Chat Model · Memory</div>
-        </div>
-        <!-- pulse ring -->
-        <div style="position:absolute;inset:-3px;border-radius:19px;border:2px solid rgba(78,164,255,0.5);animation:ring-pulse 2s ease-in-out infinite;"></div>
-      </div>
-    </div>
-
-    <!-- Arrow 2 -->
-    <div id="da2" class="darrow" style="opacity:0;transition:opacity 0.3s ease;display:flex;align-items:center;padding:0 8px;">
-      <div style="width:60px;height:2px;background:linear-gradient(90deg,#4ea4ff,#7edeff);position:relative;">
-        <div style="position:absolute;right:-6px;top:-4px;width:0;height:0;border-left:8px solid #7edeff;border-top:5px solid transparent;border-bottom:5px solid transparent;"></div>
-      </div>
-    </div>
-
-    <!-- no_op -->
-    <div id="dn3" class="dnode" style="opacity:0;transform:translateY(10px);transition:all 0.4s ease;">
-      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 20px rgba(0,93,163,0.06);min-width:110px;">
-        <div style="width:36px;height:36px;background:#f0f4ff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">→</div>
-        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:13px;font-weight:700;color:#1a2233;">no_op</div>
-      </div>
-    </div>
+<div style="margin:8px 0 0">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <span style="font:700 11px/1 'Manrope',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#595c5e">STEP <span id="wfsn">1</span> / 8</span>
+    <span id="wfsl" style="font:600 13px/1 'Plus Jakarta Sans',sans-serif;color:#2c2f31;text-align:right;max-width:65%;transition:opacity .2s">Incoming email detected in Gmail inbox</span>
   </div>
-
-  <!-- VERTICAL CONNECTOR FROM AGENT DOWN -->
-  <div id="dvc" style="width:2px;height:32px;background:linear-gradient(180deg,#005da3,#4ea4ff);margin:0 auto -16px;opacity:0;transition:opacity 0.3s ease;position:relative;z-index:2;"></div>
-
-  <!-- BOTTOM ROW: 5 tool nodes -->
-  <div style="display:flex;justify-content:center;gap:12px;position:relative;z-index:2;" id="branch-row">
-    <!-- horizontal connector bar -->
-    <div id="dhbar" style="position:absolute;top:0;left:calc(10% + 6px);right:calc(10% + 6px);height:2px;background:linear-gradient(90deg,#4ea4ff,#7edeff,#4ea4ff);opacity:0;transition:opacity 0.3s ease;"></div>
-    <!-- Gemini Agent -->
-    <div id="bt1" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
-      <div style="background:white;border:1.5px solid #4ea4ff;border-radius:14px;padding:16px 12px;text-align:center;width:120px;box-shadow:0 4px 16px rgba(0,93,163,0.1);">
-        <div style="width:40px;height:40px;background:linear-gradient(135deg,#4285F4,#34A853);border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
-          <span style="font-family:Plus Jakarta Sans,sans-serif;font-size:18px;font-weight:800;color:white;">G</span>
-        </div>
-        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#005da3;line-height:1.3;">Gemini<br>Agent</div>
-        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Model</div>
-      </div>
-    </div>
-
-    <!-- Think -->
-    <div id="bt2" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
-      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:16px 12px;text-align:center;width:110px;box-shadow:0 4px 16px rgba(0,93,163,0.06);">
-        <div style="width:40px;height:40px;background:#f0f4ff;border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#005da3"><path d="M12 2a7 7 0 0 1 7 7c0 2.6-1.4 4.9-3.5 6.2V17a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1.8C6.4 13.9 5 11.6 5 9a7 7 0 0 1 7-7zm-2 17h4v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1z"/></svg>
-        </div>
-        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#1a2233;">think</div>
-        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Tool</div>
-      </div>
-    </div>
-
-    <!-- Knowledge Base -->
-    <div id="bt3" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
-      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:16px 12px;text-align:center;width:110px;box-shadow:0 4px 16px rgba(0,93,163,0.06);">
-        <div style="width:40px;height:40px;background:#f0f4ff;border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#005da3"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-5 8v-2h8v2H8zm0-4v-2h8v2H8z"/></svg>
-        </div>
-        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#1a2233;line-height:1.3;">knowledge<br>base</div>
-        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Tool</div>
-      </div>
-    </div>
-
-    <!-- Send Email -->
-    <div id="bt4" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
-      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:16px 12px;text-align:center;width:110px;box-shadow:0 4px 16px rgba(0,93,163,0.06);">
-        <div style="width:40px;height:40px;background:#fef0f0;border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#EA4335"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </div>
-        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#1a2233;line-height:1.3;">send_email</div>
-        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Reply</div>
-      </div>
-    </div>
-
-    <!-- Log Message -->
-    <div id="bt5" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
-      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:16px 12px;text-align:center;width:110px;box-shadow:0 4px 16px rgba(0,93,163,0.06);">
-        <div style="width:40px;height:40px;background:#f0faf4;border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#34A853"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
-        </div>
-        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#1a2233;line-height:1.3;">log_message</div>
-        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Log</div>
-      </div>
+  <div style="height:2px;background:rgba(0,93,163,.1);border-radius:2px;margin-bottom:16px">
+    <div id="wfprog" style="height:100%;background:linear-gradient(90deg,#005da3,#4ea4ff);border-radius:2px;width:12.5%;transition:width .4s ease"></div>
+  </div>
+  <div style="background:#07111f;border-radius:16px;padding:28px 24px 22px;border:1px solid rgba(78,164,255,.15);overflow-x:auto">
+    <svg id="wfsvg" width="100%" viewBox="0 0 680 340" style="min-width:580px;display:block;overflow:visible">
+      <defs>
+        <marker id="wfarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M1.5 1.5L8.5 5L1.5 8.5" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+      <!-- inactive guide lines -->
+      <path d="M118,80 L162,80" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="3 3"/>
+      <path d="M222,114 L222,165" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="3 3"/>
+      <path d="M264,207 C312,207 309,278 309,278" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="3 3"/>
+      <path d="M381,278 L418,278" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="3 3"/>
+      <path d="M502,278 L524,278 L524,226 L484,226 L484,178" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="3 3"/>
+      <path d="M569,153 C569,108 605,108 605,96" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="3 3"/>
+      <!-- active lines -->
+      <path id="wac1" d="M118,80 L162,80" fill="none" stroke="#4ea4ff" stroke-width="2" stroke-linecap="round" marker-end="url(#wfarr)" style="--pl:50px" stroke-dasharray="50" stroke-dashoffset="50" opacity="0"/>
+      <path id="wac2" d="M222,114 L222,165" fill="none" stroke="#4ea4ff" stroke-width="2" stroke-linecap="round" marker-end="url(#wfarr)" style="--pl:55px" stroke-dasharray="55" stroke-dashoffset="55" opacity="0"/>
+      <path id="wac3" d="M264,207 C312,207 309,278 309,278" fill="none" stroke="#EF9F27" stroke-width="2" stroke-linecap="round" marker-end="url(#wfarr)" style="--pl:140px" stroke-dasharray="140" stroke-dashoffset="140" opacity="0"/>
+      <path id="wac4" d="M381,278 L418,278" fill="none" stroke="#EF9F27" stroke-width="2" stroke-linecap="round" marker-end="url(#wfarr)" style="--pl:42px" stroke-dasharray="42" stroke-dashoffset="42" opacity="0"/>
+      <path id="wac5" d="M502,278 L524,278 L524,226 L484,226 L484,178" fill="none" stroke="#4ea4ff" stroke-width="2" stroke-linecap="round" marker-end="url(#wfarr)" style="--pl:195px" stroke-dasharray="195" stroke-dashoffset="195" opacity="0"/>
+      <path id="wac6" d="M569,153 C569,108 605,108 605,96" fill="none" stroke="#97C459" stroke-width="2" stroke-linecap="round" marker-end="url(#wfarr)" style="--pl:96px" stroke-dasharray="96" stroke-dashoffset="96" opacity="0"/>
+      <!-- email node -->
+      <rect id="wne-g" x="4" y="56" width="120" height="52" rx="12" fill="#4ea4ff" opacity="0" style="transition:opacity .35s"/>
+      <rect id="wne-r" x="10" y="62" width="108" height="40" rx="9" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1" style="transition:all .35s"/>
+      <text id="wne-t" x="64" y="77" text-anchor="middle" dominant-baseline="central" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,.6)" style="transition:fill .35s">Email received</text>
+      <text id="wne-s" x="64" y="93" text-anchor="middle" dominant-baseline="central" font-family="Manrope,sans-serif" font-size="9.5" fill="rgba(255,255,255,.32)" style="transition:fill .35s">Gmail trigger</text>
+      <!-- agent node -->
+      <rect id="wna-g" x="154" y="38" width="136" height="84" rx="12" fill="#4ea4ff" opacity="0" style="transition:opacity .35s"/>
+      <rect id="wna-r" x="162" y="46" width="120" height="68" rx="9" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1" style="transition:all .35s"/>
+      <text id="wna-t" x="222" y="70" text-anchor="middle" dominant-baseline="central" font-family="'Plus Jakarta Sans',sans-serif" font-size="12" font-weight="700" fill="rgba(255,255,255,.65)" style="transition:fill .35s">gmail_agent</text>
+      <text id="wna-s" x="222" y="88" text-anchor="middle" dominant-baseline="central" font-family="Manrope,sans-serif" font-size="9.5" fill="rgba(255,255,255,.32)" style="transition:fill .35s">Chat Model · Memory</text>
+      <!-- gemini node -->
+      <circle id="wng-g" cx="222" cy="207" r="50" fill="#EF9F27" opacity="0" style="transition:opacity .35s"/>
+      <circle id="wng-r" cx="222" cy="207" r="42" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1" style="transition:all .35s"/>
+      <text id="wng-t" x="222" y="200" text-anchor="middle" dominant-baseline="central" font-family="'Plus Jakarta Sans',sans-serif" font-size="11.5" font-weight="700" fill="rgba(255,255,255,.6)" style="transition:fill .35s">Gemini</text>
+      <text id="wng-s" x="222" y="217" text-anchor="middle" dominant-baseline="central" font-family="Manrope,sans-serif" font-size="9.5" fill="rgba(255,255,255,.32)" style="transition:fill .35s">Agent</text>
+      <!-- think node -->
+      <circle id="wnth-g" cx="345" cy="278" r="44" fill="#EF9F27" opacity="0" style="transition:opacity .35s"/>
+      <circle id="wnth-r" cx="345" cy="278" r="36" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1" style="transition:all .35s"/>
+      <text id="wnth-t" x="345" y="278" text-anchor="middle" dominant-baseline="central" font-family="'Plus Jakarta Sans',sans-serif" font-size="11.5" font-weight="700" fill="rgba(255,255,255,.6)" style="transition:fill .35s">think</text>
+      <!-- knowledge node -->
+      <circle id="wnk-g" cx="460" cy="278" r="50" fill="#EF9F27" opacity="0" style="transition:opacity .35s"/>
+      <circle id="wnk-r" cx="460" cy="278" r="42" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1" style="transition:all .35s"/>
+      <text id="wnk-t" x="460" y="271" text-anchor="middle" dominant-baseline="central" font-family="'Plus Jakarta Sans',sans-serif" font-size="11.5" font-weight="700" fill="rgba(255,255,255,.6)" style="transition:fill .35s">knowledge</text>
+      <text id="wnk-s" x="460" y="288" text-anchor="middle" dominant-baseline="central" font-family="Manrope,sans-serif" font-size="9.5" fill="rgba(255,255,255,.32)" style="transition:fill .35s">base</text>
+      <!-- draft node -->
+      <rect id="wnd-g" x="476" y="145" width="186" height="66" rx="12" fill="#4ea4ff" opacity="0" style="transition:opacity .35s"/>
+      <rect id="wnd-r" x="484" y="153" width="170" height="50" rx="9" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1" style="transition:all .35s"/>
+      <text id="wnd-t" x="569" y="170" text-anchor="middle" dominant-baseline="central" font-family="'Plus Jakarta Sans',sans-serif" font-size="11.5" font-weight="700" fill="rgba(255,255,255,.6)" style="transition:fill .35s">Draft + review</text>
+      <text id="wnd-s" x="569" y="187" text-anchor="middle" dominant-baseline="central" font-family="Manrope,sans-serif" font-size="9.5" fill="rgba(255,255,255,.32)" style="transition:fill .35s">Awaiting approval</text>
+      <!-- sent node -->
+      <rect id="wnse-g" x="538" y="38" width="134" height="66" rx="12" fill="#97C459" opacity="0" style="transition:opacity .35s"/>
+      <rect id="wnse-r" x="546" y="46" width="118" height="50" rx="9" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1" style="transition:all .35s"/>
+      <text id="wnse-t" x="605" y="63" text-anchor="middle" dominant-baseline="central" font-family="'Plus Jakarta Sans',sans-serif" font-size="11.5" font-weight="700" fill="rgba(255,255,255,.6)" style="transition:fill .35s">Email sent</text>
+      <text id="wnse-s" x="605" y="80" text-anchor="middle" dominant-baseline="central" font-family="Manrope,sans-serif" font-size="9.5" fill="rgba(255,255,255,.32)" style="transition:fill .35s">Reply delivered</text>
+    </svg>
+    <div style="display:flex;justify-content:center;gap:10px;margin-top:20px">
+      <button id="wfbp" onclick="wfStep(-1)" disabled style="font:600 13px/1 'Plus Jakarta Sans',sans-serif;padding:9px 20px;border-radius:999px;cursor:pointer;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);transition:all .2s">&#8592; Prev</button>
+      <button id="wfbpl" onclick="wfTogglePlay()" style="font:600 13px/1 'Plus Jakarta Sans',sans-serif;padding:9px 22px;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,#005da3,#4ea4ff);color:#fff;border:none;box-shadow:0 4px 14px rgba(0,93,163,.4);transition:all .2s">&#9654; Play</button>
+      <button id="wfbn" onclick="wfStep(1)" style="font:600 13px/1 'Plus Jakarta Sans',sans-serif;padding:9px 20px;border-radius:999px;cursor:pointer;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);transition:all .2s">Next &#8594;</button>
     </div>
   </div>
 </div>
-</div>
-<style>
-@keyframes ring-pulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:0.9;transform:scale(1.03)}}
-</style>
+<style>@keyframes wf-draw{from{stroke-dashoffset:var(--pl);opacity:1}to{stroke-dashoffset:0;opacity:1}}.wf-dr{animation:wf-draw .5s ease-out forwards}</style>
 <script>
-(function(){
-  var seq = [
-    {el:'dn1',delay:100},{el:'da1',delay:350},{el:'dn2',delay:550},
-    {el:'da2',delay:800},{el:'dn3',delay:1000},{el:'dvc',delay:1150},
-    {el:'dhbar',delay:1250},
-    {el:'bt1',delay:1350},{el:'bt2',delay:1480},{el:'bt3',delay:1610},
-    {el:'bt4',delay:1740},{el:'bt5',delay:1870}
-  ];
-  var obs = new IntersectionObserver(function(entries){
-    if(!entries[0].isIntersecting) return;
-    obs.disconnect();
-    seq.forEach(function(s){
-      setTimeout(function(){
-        var el = document.getElementById(s.el);
-        if(!el) return;
-        el.style.opacity='1';
-        el.style.transform='translateY(0)';
-      }, s.delay);
-    });
-  },{threshold:0.2});
-  var wrap = document.getElementById('agent-diagram');
-  if(wrap) obs.observe(wrap);
-})();
+var C={b:{fill:"rgba(0,93,163,.28)",stroke:"#4ea4ff",glow:".12",text:"#c8e8ff",sub:"rgba(78,164,255,.7)"},am:{fill:"rgba(186,117,23,.22)",stroke:"#EF9F27",glow:".1",text:"#ffe4a0",sub:"rgba(239,159,39,.65)"},gr:{fill:"rgba(59,109,17,.22)",stroke:"#97C459",glow:".09",text:"#d4f0a0",sub:"rgba(151,196,89,.65)"}};
+var S=[{n:[["wne","b"]],c:[],l:"Incoming email detected in Gmail inbox"},{n:[["wne","b"],["wna","b"]],c:["wac1"],l:"Email triggers the gmail_agent orchestrator"},{n:[["wna","b"],["wng","am"]],c:["wac2"],l:"Agent calls Gemini to reason about the email"},{n:[["wng","am"],["wnth","am"]],c:["wac3"],l:"Gemini uses the Think tool to plan the response"},{n:[["wnth","am"],["wnk","am"]],c:["wac4"],l:"Think retrieves from the internal sales knowledge base"},{n:[["wnk","am"],["wnd","b"]],c:["wac5"],l:"Knowledge retrieved — Agent drafts a reply for approval"},{n:[["wnd","gr"]],c:[],l:"User reviews and approves the email draft",sub:"User approved"},{n:[["wnd","gr"],["wnse","gr"]],c:["wac6"],l:"Email sent automatically to the client"}];
+var AN=["wne","wna","wng","wnth","wnk","wnd","wnse"],AC=["wac1","wac2","wac3","wac4","wac5","wac6"],cur=0,playing=false,tmr=null;
+function sn(id,th){var c=C[th],g=document.getElementById(id+"-g"),r=document.getElementById(id+"-r"),t=document.getElementById(id+"-t"),s=document.getElementById(id+"-s");if(g)g.style.opacity=c.glow;if(r){r.setAttribute("fill",c.fill);r.setAttribute("stroke",c.stroke);r.setAttribute("stroke-width","2");}if(t)t.setAttribute("fill",c.text);if(s)s.setAttribute("fill",c.sub);}
+function rn(id){var g=document.getElementById(id+"-g"),r=document.getElementById(id+"-r"),t=document.getElementById(id+"-t"),s=document.getElementById(id+"-s");if(g)g.style.opacity="0";if(r){r.setAttribute("fill","rgba(255,255,255,.06)");r.setAttribute("stroke","rgba(255,255,255,.15)");r.setAttribute("stroke-width","1");}if(t)t.setAttribute("fill","rgba(255,255,255,.6)");if(s)s.setAttribute("fill","rgba(255,255,255,.32)");}
+function ac(id){var el=document.getElementById(id);if(!el)return;el.style.opacity="";el.classList.remove("wf-dr");void el.getBoundingClientRect();el.classList.add("wf-dr");}
+function rc(id){var el=document.getElementById(id);if(!el)return;el.classList.remove("wf-dr");el.style.opacity="0";el.setAttribute("stroke-dashoffset",el.getAttribute("stroke-dasharray"));}
+function render(i){var s=S[i];document.getElementById("wfsn").textContent=i+1;document.getElementById("wfsl").textContent=s.l;document.getElementById("wfprog").style.width=((i+1)/S.length*100)+"%";AN.forEach(function(id){rn(id);});AC.forEach(function(id){rc(id);});document.getElementById("wnd-s").textContent="Awaiting approval";s.n.forEach(function(x){sn(x[0],x[1]);});if(s.sub)document.getElementById("wnd-s").textContent=s.sub;s.c.forEach(function(id){ac(id);});document.getElementById("wfbp").disabled=(i===0);document.getElementById("wfbn").disabled=(i===S.length-1);}
+function wfStep(d){cur=Math.max(0,Math.min(S.length-1,cur+d));render(cur);if(playing&&cur===S.length-1){playing=false;clearInterval(tmr);document.getElementById("wfbpl").innerHTML="&#9654; Play";}}
+function wfTogglePlay(){playing=!playing;document.getElementById("wfbpl").innerHTML=playing?"&#9646;&#9646; Pause":"&#9654; Play";if(playing){if(cur===S.length-1)cur=-1;tmr=setInterval(function(){wfStep(1);},2000);}else clearInterval(tmr);}
+render(0);
 </script></div>
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Outcome</h2>
 <p class="text-on-surface-variant leading-relaxed mb-6">What started as a 50-person sales team pilot scaled to <strong class="text-on-surface font-bold">3,000+ internal Google users</strong> — one of the fastest internal product adoptions on the team at the time.</p>
