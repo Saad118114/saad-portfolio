@@ -24,135 +24,156 @@
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Problem</h2><p class="text-on-surface-variant leading-relaxed">Google's enterprise sales team was spending hours each week crafting responses to repetitive client queries. The information existed internally — but siloed across docs, slides, and email threads. Could an AI assistant bridge that gap fast enough to actually change how a 50-person team worked?</p><div class="mt-6 p-4 rounded-xl bg-secondary-container/30 border-l-4 border-primary"><p class="text-sm text-on-surface-variant italic font-medium">Full case study content coming soon. Prompt Claude with the details and this page updates instantly.</p></div></div>
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Approach</h2>
 <p class="text-on-surface-variant leading-relaxed mb-8">The system was architected as a fully autonomous Gmail agent. On every inbound email, the agent reasons over an internal knowledge base, drafts a contextual reply, sends it, and logs the interaction — all without human intervention.</p>
-<div class="relative w-full overflow-x-auto py-4" id="agent-diagram" aria-label="Gmail Agent Architecture Diagram">
-  <svg id="agent-svg" viewBox="0 0 820 340" xmlns="http://www.w3.org/2000/svg" class="w-full min-w-[640px]" style="max-height:340px">
-    <defs>
-      <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-        <path d="M0,0 L0,6 L8,3 z" fill="#005da3" opacity="0.7"/>
-      </marker>
-      <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-        <path d="M0,0 L0,6 L8,3 z" fill="#4ea4ff" opacity="0.6"/>
-      </marker>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-      <style>
-        .node-box { rx:12; ry:12; fill:rgba(255,255,255,0.55); stroke:#4ea4ff; stroke-width:1.5; }
-        .node-box-dark { rx:12; ry:12; fill:rgba(0,93,163,0.12); stroke:#005da3; stroke-width:1.5; }
-        .node-label { font-family:"Manrope",sans-serif; font-size:11px; font-weight:700; fill:#2c2f31; text-anchor:middle; }
-        .node-sublabel { font-family:"Manrope",sans-serif; font-size:9px; font-weight:600; fill:#595c5e; text-anchor:middle; }
-        .icon-bg { rx:8; ry:8; }
-        .conn-line { fill:none; stroke:#005da3; stroke-width:1.5; stroke-opacity:0.5; marker-end:url(#arr); }
-        .conn-line-branch { fill:none; stroke:#4ea4ff; stroke-width:1.2; stroke-opacity:0.4; marker-end:url(#arr2); stroke-dasharray:4,3; }
-        .pulse-dot { fill:#005da3; }
-        @keyframes dash-flow { from{stroke-dashoffset:20} to{stroke-dashoffset:0} }
-        @keyframes pulse-move { 0%{opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{opacity:0} }
-        @keyframes node-pop { from{opacity:0;transform-origin:center;transform:scale(0.7)} to{opacity:1;transform:scale(1)} }
-        .node-group { opacity:0; animation: node-pop 0.4s ease-out forwards; }
-        .flow-line { stroke-dasharray: 120; stroke-dashoffset: 120; transition: stroke-dashoffset 0.7s ease; }
-        .flow-line.drawn { stroke-dashoffset: 0; }
-        .branch-line { stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 0.5s ease; }
-        .branch-line.drawn { stroke-dashoffset: 0; }
-      </style>
-    </defs>
+<div class="w-full overflow-x-auto" id="agent-diagram">
+<div style="min-width:700px;background:linear-gradient(135deg,#f0f5ff 0%,#e8f0fe 100%);border-radius:20px;padding:40px 32px 32px;border:1px solid rgba(0,93,163,0.12);position:relative;overflow:hidden;">
 
-    <!-- BACKGROUND PANEL -->
-    <rect x="10" y="10" width="800" height="320" rx="16" fill="rgba(0,93,163,0.03)" stroke="#4ea4ff" stroke-width="0.8" stroke-opacity="0.3"/>
+  <!-- subtle grid bg -->
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,93,163,0.06) 1px,transparent 1px);background-size:28px 28px;border-radius:20px;pointer-events:none;"></div>
 
-    <!-- MAIN FLOW LINES (horizontal) -->
-    <line id="l1" class="conn-line flow-line" x1="145" y1="85" x2="300" y2="85"/>
-    <line id="l2" class="conn-line flow-line" x1="430" y1="85" x2="580" y2="85"/>
+  <!-- TOP ROW: 3 main nodes -->
+  <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:48px;position:relative;z-index:2;">
 
-    <!-- BRANCH LINES (vertical down from agent) -->
-    <line id="b1" class="conn-line-branch branch-line" x1="365" y1="115" x2="140" y2="215"/>
-    <line id="b2" class="conn-line-branch branch-line" x1="365" y1="115" x2="255" y2="215"/>
-    <line id="b3" class="conn-line-branch branch-line" x1="365" y1="115" x2="365" y2="215"/>
-    <line id="b4" class="conn-line-branch branch-line" x1="365" y1="115" x2="475" y2="215"/>
-    <line id="b5" class="conn-line-branch branch-line" x1="365" y1="115" x2="590" y2="215"/>
+    <!-- Email Trigger -->
+    <div id="dn1" class="dnode" style="opacity:0;transform:translateY(10px);transition:all 0.4s ease;">
+      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 20px rgba(0,93,163,0.08);min-width:160px;">
+        <div style="width:36px;height:36px;background:#EA4335;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div>
+          <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:13px;font-weight:700;color:#1a2233;line-height:1.2;">Email Received</div>
+          <div style="font-family:Manrope,sans-serif;font-size:10px;color:#6b7a99;margin-top:2px;font-weight:600;">Gmail Trigger</div>
+        </div>
+      </div>
+    </div>
 
-    <!-- NODE 1: Email Trigger -->
-    <g id="n1" class="node-group" style="animation-delay:0.1s">
-      <rect class="node-box" x="30" y="55" width="115" height="60"/>
-      <rect class="icon-bg" x="46" y="62" width="22" height="22" fill="#EA4335" opacity="0.9"/>
-      <text x="57" y="78" font-family="monospace" font-size="13" fill="white" text-anchor="middle">✉</text>
-      <text class="node-label" x="87" y="76">Email Received</text>
-      <text class="node-sublabel" x="87" y="89">Gmail Trigger</text>
-      <circle cx="145" cy="85" r="3.5" fill="#005da3" opacity="0.8"/>
-    </g>
+    <!-- Arrow 1 -->
+    <div id="da1" class="darrow" style="opacity:0;transition:opacity 0.3s ease;display:flex;align-items:center;padding:0 8px;">
+      <div style="width:60px;height:2px;background:linear-gradient(90deg,#005da3,#4ea4ff);position:relative;">
+        <div style="position:absolute;right:-6px;top:-4px;width:0;height:0;border-left:8px solid #4ea4ff;border-top:5px solid transparent;border-bottom:5px solid transparent;"></div>
+      </div>
+    </div>
 
-    <!-- NODE 2: Gmail Agent (central) -->
-    <g id="n2" class="node-group" style="animation-delay:0.5s">
-      <rect class="node-box-dark" x="300" y="48" width="130" height="74" filter="url(#glow)"/>
-      <rect class="icon-bg" x="316" y="57" width="24" height="24" fill="#005da3" opacity="0.9"/>
-      <text x="328" y="74" font-family="monospace" font-size="14" fill="white" text-anchor="middle">🤖</text>
-      <text class="node-label" x="365" y="80" fill="#005da3">gmail_agent</text>
-      <text class="node-sublabel" x="365" y="94">Chat Model · Memory</text>
-      <circle cx="430" cy="85" r="3.5" fill="#005da3" opacity="0.8"/>
-    </g>
+    <!-- Gmail Agent (central hero) -->
+    <div id="dn2" class="dnode" style="opacity:0;transform:translateY(10px);transition:all 0.4s ease;">
+      <div style="background:linear-gradient(135deg,#005da3,#0076cc);border-radius:16px;padding:16px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 8px 32px rgba(0,93,163,0.3);min-width:180px;position:relative;">
+        <div style="width:40px;height:40px;background:rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        </div>
+        <div>
+          <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">gmail_agent</div>
+          <div style="font-family:Manrope,sans-serif;font-size:10px;color:rgba(255,255,255,0.7);margin-top:3px;font-weight:600;">Chat Model · Memory</div>
+        </div>
+        <!-- pulse ring -->
+        <div style="position:absolute;inset:-3px;border-radius:19px;border:2px solid rgba(78,164,255,0.5);animation:ring-pulse 2s ease-in-out infinite;"></div>
+      </div>
+    </div>
 
-    <!-- NODE 3: no_op -->
-    <g id="n3" class="node-group" style="animation-delay:0.9s">
-      <rect class="node-box" x="580" y="55" width="100" height="60"/>
-      <text font-family="monospace" font-size="18" x="610" y="82" fill="#595c5e">→</text>
-      <text class="node-label" x="630" y="97">no_op</text>
-    </g>
+    <!-- Arrow 2 -->
+    <div id="da2" class="darrow" style="opacity:0;transition:opacity 0.3s ease;display:flex;align-items:center;padding:0 8px;">
+      <div style="width:60px;height:2px;background:linear-gradient(90deg,#4ea4ff,#7edeff);position:relative;">
+        <div style="position:absolute;right:-6px;top:-4px;width:0;height:0;border-left:8px solid #7edeff;border-top:5px solid transparent;border-bottom:5px solid transparent;"></div>
+      </div>
+    </div>
 
-    <!-- BRANCH NODES (bottom row) -->
+    <!-- no_op -->
+    <div id="dn3" class="dnode" style="opacity:0;transform:translateY(10px);transition:all 0.4s ease;">
+      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 20px rgba(0,93,163,0.06);min-width:110px;">
+        <div style="width:36px;height:36px;background:#f0f4ff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">→</div>
+        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:13px;font-weight:700;color:#1a2233;">no_op</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERTICAL CONNECTOR FROM AGENT DOWN -->
+  <div id="dvc" style="width:2px;height:32px;background:linear-gradient(180deg,#005da3,#4ea4ff);margin:0 auto -16px;opacity:0;transition:opacity 0.3s ease;position:relative;z-index:2;"></div>
+
+  <!-- BOTTOM ROW: 5 tool nodes -->
+  <div style="display:flex;justify-content:center;gap:12px;position:relative;z-index:2;" id="branch-row">
+    <!-- horizontal connector bar -->
+    <div id="dhbar" style="position:absolute;top:0;left:calc(10% + 6px);right:calc(10% + 6px);height:2px;background:linear-gradient(90deg,#4ea4ff,#7edeff,#4ea4ff);opacity:0;transition:opacity 0.3s ease;"></div>
     <!-- Gemini Agent -->
-    <g id="b-n1" class="node-group" style="animation-delay:1.1s">
-      <rect class="node-box-dark" x="90" y="215" width="100" height="72" rx="50" ry="50"/>
-      <text x="140" y="247" font-family="monospace" font-size="18" fill="#4285F4" text-anchor="middle">G</text>
-      <text class="node-label" x="140" y="264" fill="#005da3">Gemini</text>
-      <text class="node-label" x="140" y="278" fill="#005da3">Agent</text>
-    </g>
-    <!-- Think -->
-    <g id="b-n2" class="node-group" style="animation-delay:1.25s">
-      <rect class="node-box-dark" x="205" y="215" width="100" height="72" rx="50" ry="50"/>
-      <text x="255" y="252" font-family="monospace" font-size="20" fill="#005da3" text-anchor="middle">💡</text>
-      <text class="node-label" x="255" y="275" fill="#005da3">think</text>
-    </g>
-    <!-- Knowledge Base -->
-    <g id="b-n3" class="node-group" style="animation-delay:1.4s">
-      <rect class="node-box-dark" x="315" y="215" width="100" height="72" rx="50" ry="50"/>
-      <text x="365" y="252" font-family="monospace" font-size="18" fill="#005da3" text-anchor="middle">📄</text>
-      <text class="node-label" x="365" y="270" fill="#005da3">knowledge</text>
-      <text class="node-label" x="365" y="282" fill="#005da3">base</text>
-    </g>
-    <!-- Send Email -->
-    <g id="b-n4" class="node-group" style="animation-delay:1.55s">
-      <rect class="node-box-dark" x="425" y="215" width="100" height="72" rx="50" ry="50"/>
-      <text x="475" y="252" font-family="monospace" font-size="18" fill="#EA4335" text-anchor="middle">✉</text>
-      <text class="node-label" x="475" y="270" fill="#005da3">send_email</text>
-      <text class="node-sublabel" x="475" y="282">reply: message</text>
-    </g>
-    <!-- Log Message -->
-    <g id="b-n5" class="node-group" style="animation-delay:1.7s">
-      <rect class="node-box-dark" x="540" y="215" width="100" height="72" rx="50" ry="50"/>
-      <text x="590" y="252" font-family="monospace" font-size="18" fill="#34A853" text-anchor="middle">📊</text>
-      <text class="node-label" x="590" y="270" fill="#005da3">log_message</text>
-      <text class="node-sublabel" x="590" y="282">append: sheet</text>
-    </g>
+    <div id="bt1" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
+      <div style="background:white;border:1.5px solid #4ea4ff;border-radius:14px;padding:16px 12px;text-align:center;width:120px;box-shadow:0 4px 16px rgba(0,93,163,0.1);">
+        <div style="width:40px;height:40px;background:linear-gradient(135deg,#4285F4,#34A853);border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:Plus Jakarta Sans,sans-serif;font-size:18px;font-weight:800;color:white;">G</span>
+        </div>
+        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#005da3;line-height:1.3;">Gemini<br>Agent</div>
+        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Model</div>
+      </div>
+    </div>
 
-    <!-- LEGEND -->
-    <text x="40" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Model</text>
-    <text x="210" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Tool</text>
-    <text x="310" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Tool</text>
-    <text x="440" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Reply</text>
-    <text x="555" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Log</text>
-  </svg>
+    <!-- Think -->
+    <div id="bt2" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
+      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:16px 12px;text-align:center;width:110px;box-shadow:0 4px 16px rgba(0,93,163,0.06);">
+        <div style="width:40px;height:40px;background:#f0f4ff;border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#005da3"><path d="M12 2a7 7 0 0 1 7 7c0 2.6-1.4 4.9-3.5 6.2V17a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1.8C6.4 13.9 5 11.6 5 9a7 7 0 0 1 7-7zm-2 17h4v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1z"/></svg>
+        </div>
+        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#1a2233;">think</div>
+        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Tool</div>
+      </div>
+    </div>
+
+    <!-- Knowledge Base -->
+    <div id="bt3" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
+      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:16px 12px;text-align:center;width:110px;box-shadow:0 4px 16px rgba(0,93,163,0.06);">
+        <div style="width:40px;height:40px;background:#f0f4ff;border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#005da3"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-5 8v-2h8v2H8zm0-4v-2h8v2H8z"/></svg>
+        </div>
+        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#1a2233;line-height:1.3;">knowledge<br>base</div>
+        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Tool</div>
+      </div>
+    </div>
+
+    <!-- Send Email -->
+    <div id="bt4" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
+      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:16px 12px;text-align:center;width:110px;box-shadow:0 4px 16px rgba(0,93,163,0.06);">
+        <div style="width:40px;height:40px;background:#fef0f0;border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#EA4335"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#1a2233;line-height:1.3;">send_email</div>
+        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Reply</div>
+      </div>
+    </div>
+
+    <!-- Log Message -->
+    <div id="bt5" class="btool" style="opacity:0;transform:translateY(12px);transition:all 0.4s ease;">
+      <div style="background:white;border:1.5px solid #e0e8f5;border-radius:14px;padding:16px 12px;text-align:center;width:110px;box-shadow:0 4px 16px rgba(0,93,163,0.06);">
+        <div style="width:40px;height:40px;background:#f0faf4;border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#34A853"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        </div>
+        <div style="font-family:Plus Jakarta Sans,sans-serif;font-size:12px;font-weight:700;color:#1a2233;line-height:1.3;">log_message</div>
+        <div style="font-family:Manrope,sans-serif;font-size:9px;color:#6b7a99;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Log</div>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+<style>
+@keyframes ring-pulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:0.9;transform:scale(1.03)}}
+</style>
 <script>
 (function(){
+  var seq = [
+    {el:'dn1',delay:100},{el:'da1',delay:350},{el:'dn2',delay:550},
+    {el:'da2',delay:800},{el:'dn3',delay:1000},{el:'dvc',delay:1150},
+    {el:'dhbar',delay:1250},
+    {el:'bt1',delay:1350},{el:'bt2',delay:1480},{el:'bt3',delay:1610},
+    {el:'bt4',delay:1740},{el:'bt5',delay:1870}
+  ];
   var obs = new IntersectionObserver(function(entries){
     if(!entries[0].isIntersecting) return;
     obs.disconnect();
-    var delay = 100;
-    ['l1','l2'].forEach(function(id,i){ setTimeout(function(){ var el=document.getElementById(id); if(el) el.classList.add('drawn'); }, delay + i*400); });
-    ['b1','b2','b3','b4','b5'].forEach(function(id,i){ setTimeout(function(){ var el=document.getElementById(id); if(el) el.classList.add('drawn'); }, delay + 900 + i*120); });
-  },{threshold:0.3});
-  var svg = document.getElementById('agent-diagram');
-  if(svg) obs.observe(svg);
+    seq.forEach(function(s){
+      setTimeout(function(){
+        var el = document.getElementById(s.el);
+        if(!el) return;
+        el.style.opacity='1';
+        el.style.transform='translateY(0)';
+      }, s.delay);
+    });
+  },{threshold:0.2});
+  var wrap = document.getElementById('agent-diagram');
+  if(wrap) obs.observe(wrap);
 })();
 </script></div>
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Outcome</h2>
