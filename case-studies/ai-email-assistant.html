@@ -22,7 +22,139 @@
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">4 hrs</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Saved/Person/Week</div></div><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">3,000+</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Internal Users</div></div><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">50</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Person Pilot</div></div><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">60x</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Scale Growth</div></div></div>
   <div class="space-y-8">
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Problem</h2><p class="text-on-surface-variant leading-relaxed">Google's enterprise sales team was spending hours each week crafting responses to repetitive client queries. The information existed internally — but siloed across docs, slides, and email threads. Could an AI assistant bridge that gap fast enough to actually change how a 50-person team worked?</p><div class="mt-6 p-4 rounded-xl bg-secondary-container/30 border-l-4 border-primary"><p class="text-sm text-on-surface-variant italic font-medium">Full case study content coming soon. Prompt Claude with the details and this page updates instantly.</p></div></div>
-    <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Approach</h2><p class="text-on-surface-variant leading-relaxed">Strategic framework, product decisions, and cross-functional execution details will be documented here.</p></div>
+    <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Approach</h2>
+<p class="text-on-surface-variant leading-relaxed mb-8">The system was architected as a fully autonomous Gmail agent. On every inbound email, the agent reasons over an internal knowledge base, drafts a contextual reply, sends it, and logs the interaction — all without human intervention.</p>
+<div class="relative w-full overflow-x-auto py-4" id="agent-diagram" aria-label="Gmail Agent Architecture Diagram">
+  <svg id="agent-svg" viewBox="0 0 820 340" xmlns="http://www.w3.org/2000/svg" class="w-full min-w-[640px]" style="max-height:340px">
+    <defs>
+      <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#005da3" opacity="0.7"/>
+      </marker>
+      <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#4ea4ff" opacity="0.6"/>
+      </marker>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <style>
+        .node-box { rx:12; ry:12; fill:rgba(255,255,255,0.55); stroke:#4ea4ff; stroke-width:1.5; }
+        .node-box-dark { rx:12; ry:12; fill:rgba(0,93,163,0.12); stroke:#005da3; stroke-width:1.5; }
+        .node-label { font-family:"Manrope",sans-serif; font-size:11px; font-weight:700; fill:#2c2f31; text-anchor:middle; }
+        .node-sublabel { font-family:"Manrope",sans-serif; font-size:9px; font-weight:600; fill:#595c5e; text-anchor:middle; }
+        .icon-bg { rx:8; ry:8; }
+        .conn-line { fill:none; stroke:#005da3; stroke-width:1.5; stroke-opacity:0.5; marker-end:url(#arr); }
+        .conn-line-branch { fill:none; stroke:#4ea4ff; stroke-width:1.2; stroke-opacity:0.4; marker-end:url(#arr2); stroke-dasharray:4,3; }
+        .pulse-dot { fill:#005da3; }
+        @keyframes dash-flow { from{stroke-dashoffset:20} to{stroke-dashoffset:0} }
+        @keyframes pulse-move { 0%{opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{opacity:0} }
+        @keyframes node-pop { from{opacity:0;transform-origin:center;transform:scale(0.7)} to{opacity:1;transform:scale(1)} }
+        .node-group { opacity:0; animation: node-pop 0.4s ease-out forwards; }
+        .flow-line { stroke-dasharray: 120; stroke-dashoffset: 120; transition: stroke-dashoffset 0.7s ease; }
+        .flow-line.drawn { stroke-dashoffset: 0; }
+        .branch-line { stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 0.5s ease; }
+        .branch-line.drawn { stroke-dashoffset: 0; }
+      </style>
+    </defs>
+
+    <!-- BACKGROUND PANEL -->
+    <rect x="10" y="10" width="800" height="320" rx="16" fill="rgba(0,93,163,0.03)" stroke="#4ea4ff" stroke-width="0.8" stroke-opacity="0.3"/>
+
+    <!-- MAIN FLOW LINES (horizontal) -->
+    <line id="l1" class="conn-line flow-line" x1="145" y1="85" x2="300" y2="85"/>
+    <line id="l2" class="conn-line flow-line" x1="430" y1="85" x2="580" y2="85"/>
+
+    <!-- BRANCH LINES (vertical down from agent) -->
+    <line id="b1" class="conn-line-branch branch-line" x1="365" y1="115" x2="140" y2="215"/>
+    <line id="b2" class="conn-line-branch branch-line" x1="365" y1="115" x2="255" y2="215"/>
+    <line id="b3" class="conn-line-branch branch-line" x1="365" y1="115" x2="365" y2="215"/>
+    <line id="b4" class="conn-line-branch branch-line" x1="365" y1="115" x2="475" y2="215"/>
+    <line id="b5" class="conn-line-branch branch-line" x1="365" y1="115" x2="590" y2="215"/>
+
+    <!-- NODE 1: Email Trigger -->
+    <g id="n1" class="node-group" style="animation-delay:0.1s">
+      <rect class="node-box" x="30" y="55" width="115" height="60"/>
+      <rect class="icon-bg" x="46" y="62" width="22" height="22" fill="#EA4335" opacity="0.9"/>
+      <text x="57" y="78" font-family="monospace" font-size="13" fill="white" text-anchor="middle">✉</text>
+      <text class="node-label" x="87" y="76">Email Received</text>
+      <text class="node-sublabel" x="87" y="89">Gmail Trigger</text>
+      <circle cx="145" cy="85" r="3.5" fill="#005da3" opacity="0.8"/>
+    </g>
+
+    <!-- NODE 2: Gmail Agent (central) -->
+    <g id="n2" class="node-group" style="animation-delay:0.5s">
+      <rect class="node-box-dark" x="300" y="48" width="130" height="74" filter="url(#glow)"/>
+      <rect class="icon-bg" x="316" y="57" width="24" height="24" fill="#005da3" opacity="0.9"/>
+      <text x="328" y="74" font-family="monospace" font-size="14" fill="white" text-anchor="middle">🤖</text>
+      <text class="node-label" x="365" y="80" fill="#005da3">gmail_agent</text>
+      <text class="node-sublabel" x="365" y="94">Chat Model · Memory</text>
+      <circle cx="430" cy="85" r="3.5" fill="#005da3" opacity="0.8"/>
+    </g>
+
+    <!-- NODE 3: no_op -->
+    <g id="n3" class="node-group" style="animation-delay:0.9s">
+      <rect class="node-box" x="580" y="55" width="100" height="60"/>
+      <text font-family="monospace" font-size="18" x="610" y="82" fill="#595c5e">→</text>
+      <text class="node-label" x="630" y="97">no_op</text>
+    </g>
+
+    <!-- BRANCH NODES (bottom row) -->
+    <!-- Gemini Agent -->
+    <g id="b-n1" class="node-group" style="animation-delay:1.1s">
+      <rect class="node-box-dark" x="90" y="215" width="100" height="72" rx="50" ry="50"/>
+      <text x="140" y="247" font-family="monospace" font-size="18" fill="#4285F4" text-anchor="middle">G</text>
+      <text class="node-label" x="140" y="264" fill="#005da3">Gemini</text>
+      <text class="node-label" x="140" y="278" fill="#005da3">Agent</text>
+    </g>
+    <!-- Think -->
+    <g id="b-n2" class="node-group" style="animation-delay:1.25s">
+      <rect class="node-box-dark" x="205" y="215" width="100" height="72" rx="50" ry="50"/>
+      <text x="255" y="252" font-family="monospace" font-size="20" fill="#005da3" text-anchor="middle">💡</text>
+      <text class="node-label" x="255" y="275" fill="#005da3">think</text>
+    </g>
+    <!-- Knowledge Base -->
+    <g id="b-n3" class="node-group" style="animation-delay:1.4s">
+      <rect class="node-box-dark" x="315" y="215" width="100" height="72" rx="50" ry="50"/>
+      <text x="365" y="252" font-family="monospace" font-size="18" fill="#005da3" text-anchor="middle">📄</text>
+      <text class="node-label" x="365" y="270" fill="#005da3">knowledge</text>
+      <text class="node-label" x="365" y="282" fill="#005da3">base</text>
+    </g>
+    <!-- Send Email -->
+    <g id="b-n4" class="node-group" style="animation-delay:1.55s">
+      <rect class="node-box-dark" x="425" y="215" width="100" height="72" rx="50" ry="50"/>
+      <text x="475" y="252" font-family="monospace" font-size="18" fill="#EA4335" text-anchor="middle">✉</text>
+      <text class="node-label" x="475" y="270" fill="#005da3">send_email</text>
+      <text class="node-sublabel" x="475" y="282">reply: message</text>
+    </g>
+    <!-- Log Message -->
+    <g id="b-n5" class="node-group" style="animation-delay:1.7s">
+      <rect class="node-box-dark" x="540" y="215" width="100" height="72" rx="50" ry="50"/>
+      <text x="590" y="252" font-family="monospace" font-size="18" fill="#34A853" text-anchor="middle">📊</text>
+      <text class="node-label" x="590" y="270" fill="#005da3">log_message</text>
+      <text class="node-sublabel" x="590" y="282">append: sheet</text>
+    </g>
+
+    <!-- LEGEND -->
+    <text x="40" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Model</text>
+    <text x="210" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Tool</text>
+    <text x="310" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Tool</text>
+    <text x="440" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Reply</text>
+    <text x="555" y="316" font-family="Manrope,sans-serif" font-size="9" fill="#595c5e" opacity="0.8">Log</text>
+  </svg>
+</div>
+<script>
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    obs.disconnect();
+    var delay = 100;
+    ['l1','l2'].forEach(function(id,i){ setTimeout(function(){ var el=document.getElementById(id); if(el) el.classList.add('drawn'); }, delay + i*400); });
+    ['b1','b2','b3','b4','b5'].forEach(function(id,i){ setTimeout(function(){ var el=document.getElementById(id); if(el) el.classList.add('drawn'); }, delay + 900 + i*120); });
+  },{threshold:0.3});
+  var svg = document.getElementById('agent-diagram');
+  if(svg) obs.observe(svg);
+})();
+</script></div>
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Outcome</h2><p class="text-on-surface-variant leading-relaxed">Measurable results, business impact, and learnings will be captured here.</p></div>
   </div>
   <div class="mt-16 pt-8 border-t border-outline-variant/20 flex justify-between">
