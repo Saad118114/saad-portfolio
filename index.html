@@ -74,7 +74,7 @@
 <!-- HERO -->
 <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
   <div class="lg:col-span-7 space-y-8">
-    <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase">Open to PM Roles · Bay Area</div>
+    <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase">Open to PM Roles · NYC &amp; Remote US</div>
     <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.1]">Saad Khan.<br><span class="text-primary">Product &amp; Platform.</span></h1>
     <p class="text-xl md:text-2xl text-on-surface-variant font-light max-w-2xl leading-relaxed">10 years inside Google's advertising ecosystem. Shipped at 1M+ user scale. Built GenAI products, $20M+ revenue growth, and enterprise platforms from zero.</p>
     <div class="flex flex-wrap gap-4 pt-4">
@@ -228,6 +228,7 @@ document.getElementById("modal-close").addEventListener("click",closeModal);
 document.getElementById("modal-backdrop").addEventListener("click",closeModal);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
 function initAnimations(){
+  if(window.innerWidth<768){var tc=document.getElementById("timeline-container");if(tc){var hint=document.createElement("div");hint.textContent="swipe to explore →";hint.style.cssText="text-align:center;font-size:11px;color:#005da3;font-family:Manrope,sans-serif;padding:4px 0 8px;letter-spacing:.06em;font-weight:700;opacity:.75";tc.parentNode.insertBefore(hint,tc);setTimeout(function(){tc.scrollTo({left:90,behavior:"smooth"});setTimeout(function(){tc.scrollTo({left:0,behavior:"smooth"});},700);},900);}}
   const section=document.getElementById("trajectory"),line=document.getElementById("timeline-line"),cards=document.querySelectorAll(".milestone-card");
   let fired=false;
   new IntersectionObserver(entries=>{

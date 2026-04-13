@@ -108,6 +108,7 @@ function render(i){var s=S[i];document.getElementById("wfsn").textContent=i+1;do
 function wfStep(d){cur=Math.max(0,Math.min(S.length-1,cur+d));render(cur);if(playing&&cur===S.length-1){playing=false;clearInterval(tmr);document.getElementById("wfbpl").innerHTML="&#9654; Play";}}
 function wfTogglePlay(){playing=!playing;document.getElementById("wfbpl").innerHTML=playing?"&#9646;&#9646; Pause":"&#9654; Play";if(playing){if(cur===S.length-1)cur=-1;tmr=setInterval(function(){wfStep(1);},2000);}else clearInterval(tmr);}
 render(0);
+(function(){if(window.innerWidth>=768)return;var target=document.querySelector('[id^=wf]');if(!target)return;var fired=false;new IntersectionObserver(function(e){if(e[0].isIntersecting&&!fired){fired=true;setTimeout(function(){var btn=document.getElementById("wfbpl");if(btn&&!playing)btn.click();},600);}},{threshold:0.3}).observe(target);})();
 </script></div>
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Outcome</h2>
 <p class="text-on-surface-variant leading-relaxed mb-6">What started as a 50-person sales team pilot scaled to <strong class="text-on-surface font-bold">3,000+ internal Google users</strong> — one of the fastest internal product adoptions on the team at the time.</p>
