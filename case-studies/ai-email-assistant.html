@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script>tailwind.config={theme:{extend:{colors:{"primary":"#005da3","primary-container":"#4ea4ff","on-primary":"#edf3ff","secondary-container":"#7edeff","on-secondary-container":"#004e61","surface-container-low":"#eef1f3","surface-container-lowest":"#ffffff","surface-container":"#e5e9eb","surface-container-high":"#dfe3e6","on-surface":"#2c2f31","on-surface-variant":"#595c5e","background":"#f5f7f9","outline-variant":"#abadaf"},fontFamily:{"headline":["Plus Jakarta Sans"],"body":["Manrope"]}}}}</script>
-  <style>body{font-family:'Manrope',sans-serif}h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}.glass-panel{background:rgba(255,255,255,0.45);backdrop-filter:blur(20px)}</style>
+  <style>body{font-family:'Manrope',sans-serif}h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}.glass-panel{background:rgba(255,255,255,0.45);backdrop-filter:blur(20px)}.pdlc-tline{position:absolute;left:31px;top:0;bottom:0;width:2px;background:rgba(171,173,175,0.22);border-radius:2px}.pdlc-tfill{position:absolute;left:31px;top:0;width:2px;background:#005da3;border-radius:2px;height:0;transition:height 0.08s linear}.pdlc-ghost{font-family:'Plus Jakarta Sans',sans-serif;font-size:7rem;font-weight:800;line-height:1;color:#005da3;opacity:0.055;position:absolute;right:-8px;top:-20px;pointer-events:none;user-select:none;letter-spacing:-0.04em}.pdlc-stage{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}.pdlc-stage.pdlc-vis{opacity:1;transform:translateY(0)}.pdlc-dot{width:22px;height:22px;border-radius:50%;background:#005da3;border:2.5px solid #005da3;box-shadow:0 0 0 4px rgba(0,93,163,0.12);position:absolute;left:21px}.pdlc-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:99px;background:#eef1f3;border:1px solid rgba(171,173,175,0.3);font-size:11px;font-weight:600;color:#595c5e}.pdlc-mcard{background:white;border:1px solid rgba(171,173,175,0.18);border-radius:12px;padding:16px 20px}@media(max-width:640px){.pdlc-ghost{font-size:4rem;right:-4px}}</style>
 </head><body class="bg-background text-on-surface">
 <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,93,163,0.06)]">
   <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
@@ -140,32 +140,114 @@ render(0);
   </div>
 
   <div class="mt-12 rounded-2xl border border-primary/20 overflow-hidden" style="background:linear-gradient(135deg,#eef1f3 0%,#e8f0fb 100%)">
-    <div class="px-8 pt-7 pb-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
-        <div class="flex-1">
-          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-3" style="background:rgba(0,93,163,0.12);color:#005da3">
-            <span class="material-symbols-outlined" style="font-size:12px">schema</span>Product Development Lifecycle
-          </div>
-          <h3 class="text-lg font-extrabold text-on-surface mb-1" style="font-family:'Plus Jakarta Sans',sans-serif">See how this product was built end-to-end</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Discover &rarr; Define &rarr; Design &rarr; Build &rarr; Launch &rarr; Measure &mdash; all 6 stages documented with artifacts and metrics.</p>
-          <div class="flex items-center gap-1.5 flex-wrap">
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">search</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">assignment</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">edit</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">build</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">rocket_launch</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">bar_chart</span></div>
-            <span class="text-xs font-bold ml-2" style="color:#005da3">6 / 6 complete</span>
+    <div class="px-8 pt-8 pb-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase mb-3"><span class="material-symbols-outlined" style="font-size:13px">schema</span>Product Development Lifecycle</div>
+          <h2 class="text-2xl font-extrabold text-on-surface" style="font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-0.02em">Development Journey</h2>
+          <p class="text-sm text-on-surface-variant mt-1">All 6 stages documented — discovery through measurement.</p>
+        </div>
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">search</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">assignment</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">edit</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">build</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">rocket_launch</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">bar_chart</span></div>
+          <span class="text-xs font-bold ml-2" style="color:#005da3">6/6 complete</span>
+        </div>
+      </div>
+      <div class="relative" id="pdlc-wrap">
+        <div class="pdlc-tline"></div>
+        <div class="pdlc-tfill" id="pdlc-fill"></div>
+<footer class="bg-slate-50 border-t border-outline-variant/10 mt-8">
+  <div class="flex justify-between items-center px-8 py-8 max-w-7xl mx-auto">
+    <span class="font-bold text-slate-900">Saad Khan</span>
+    <span class="text-slate-500 text-sm">&#169; 2025 Product &amp; Platform Portfolio</span>
+  </div>
+</footer></body></html>        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:0ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">01</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">search</span>Discover</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Observing the knowledge retrieval problem</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">Google&rsquo;s enterprise sales team was spending 4+ hours per week manually researching and drafting responses to repetitive client queries. The information existed internally &mdash; but was siloed across docs, slides, and email threads. The root problem wasn&rsquo;t content quality; it was retrieval latency.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Team pain point interviews</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Time-on-task analysis</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Query categorization</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">4+ hrs/week</div><div class="text-xs font-bold text-on-surface">Time lost per person</div><div class="text-xs text-on-surface-variant mt-0.5">On repetitive query responses</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Retrieval gap</div><div class="text-xs font-bold text-on-surface">Root cause identified</div><div class="text-xs text-on-surface-variant mt-0.5">Not content quality — access speed</div></div></div>
+            </div>
           </div>
         </div>
-        <a href="ai-email-assistant-pdlc.html" class="inline-flex items-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-xl text-sm shrink-0 transition-all hover:-translate-y-0.5" style="box-shadow:0 4px 14px rgba(0,93,163,0.3)">
-          Explore the full journey<span class="material-symbols-outlined text-base">arrow_forward</span>
-        </a>
+        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:80ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">02</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">assignment</span>Define</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Scoping the pilot and defining success</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">A 50-person sales team was selected as the initial pilot &mdash; small enough to move fast, large enough for meaningful signal. Success was defined as measurable weekly time savings per person, not just adoption. Core hypothesis: if an AI agent could retrieve and draft in 30 seconds what took a human 20 minutes, behavior change would be self-sustaining.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Pilot scope document</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Success metric definition</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Hypothesis statement</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">50 people</div><div class="text-xs font-bold text-on-surface">Pilot segment size</div><div class="text-xs text-on-surface-variant mt-0.5">Enterprise sales team</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">hrs/week saved</div><div class="text-xs font-bold text-on-surface">Primary success metric</div><div class="text-xs text-on-surface-variant mt-0.5">Per person, measurable</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:160ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">03</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">edit</span>Design</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Designing a fully autonomous Gmail agent</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">The system was designed as a fully autonomous loop: inbound email triggers the agent &rarr; Gemini reasons over an internal knowledge base &rarr; contextual draft generated &rarr; presented for human approval &rarr; sent. The critical design constraint was human-in-the-loop approval &mdash; preserving trust while removing the research burden entirely.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Agent architecture doc</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Knowledge base structure</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Approval flow design</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Gemini + Gmail</div><div class="text-xs font-bold text-on-surface">Core stack</div><div class="text-xs text-on-surface-variant mt-0.5">Agent + API + knowledge base</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Human approval</div><div class="text-xs font-bold text-on-surface">Key design constraint</div><div class="text-xs text-on-surface-variant mt-0.5">Before every send</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:240ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">04</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">build</span>Build</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Building and instrumenting the agent pipeline</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">Built the agent pipeline using Gemini, Gmail API, and an internal sales knowledge base. A key build decision was to instrument every interaction for behavioral data capture &mdash; because this data was earmarked to feed Gemini&rsquo;s internal personalization layer. Usage tracking was a first-class requirement, not an afterthought.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Technical specification</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Instrumentation plan</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Knowledge base ingestion</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Gmail API</div><div class="text-xs font-bold text-on-surface">Integration layer</div><div class="text-xs text-on-surface-variant mt-0.5">Trigger + send pipeline</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Instrumented</div><div class="text-xs font-bold text-on-surface">Data capture</div><div class="text-xs text-on-surface-variant mt-0.5">Feeds Gemini personalization</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:320ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">05</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">rocket_launch</span>Launch</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Piloting and scaling through word of mouth</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">Launched to the 50-person sales pilot with no formal announcement. Within two weeks, users were sharing the tool across the wider org without any prompting. The product grew through word-of-mouth &mdash; a signal that time savings were immediately obvious and the tool was genuinely changing how people worked day-to-day.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Pilot launch brief</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Onboarding materials</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Feedback collection</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">50 users</div><div class="text-xs font-bold text-on-surface">Pilot launch size</div><div class="text-xs text-on-surface-variant mt-0.5">Enterprise sales team</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Word of mouth</div><div class="text-xs font-bold text-on-surface">Growth driver</div><div class="text-xs text-on-surface-variant mt-0.5">No formal rollout needed</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pdlc-stage pl-14 pt-10 pb-8" style="position:relative;transition-delay:400ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">06</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">bar_chart</span>Measure</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">60x scale, 4 hrs saved, and a Gemini contribution</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">The pilot scaled 60x from 50 to 3,000+ internal users, driven entirely by organic adoption. Each user saved an average of 4 hours per week. The behavioral data captured from this deployment was fed directly into Gemini&rsquo;s internal personalization layer, making the project&rsquo;s impact extend well beyond the tool itself.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Growth analysis</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Time savings report</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Gemini data contribution</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">3,000+ users</div><div class="text-xs font-bold text-on-surface">Scale achieved</div><div class="text-xs text-on-surface-variant mt-0.5">60x from 50-person pilot</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">4 hrs/week</div><div class="text-xs font-bold text-on-surface">Saved per person</div><div class="text-xs text-on-surface-variant mt-0.5">Contributed to Gemini launch</div></div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -175,4 +257,11 @@ render(0);
     <span class="font-bold text-slate-900">Saad Khan</span>
     <span class="text-slate-500 text-sm">&#169; 2025 Product &amp; Platform Portfolio</span>
   </div>
-</footer></body></html>
+</footer>
+<script>
+var pdlcObs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('pdlc-vis');});},{threshold:0.1});
+document.querySelectorAll('.pdlc-stage').forEach(function(el){pdlcObs.observe(el);});
+function updatePdlcLine(){var w=document.getElementById('pdlc-wrap'),f=document.getElementById('pdlc-fill');if(!w||!f)return;var r=w.getBoundingClientRect(),s=Math.max(0,window.innerHeight*0.65-r.top),p=Math.min(100,Math.max(0,(s/r.height)*100));f.style.height=p+'%';}
+window.addEventListener('scroll',updatePdlcLine,{passive:true});updatePdlcLine();
+</script>
+</body></html>

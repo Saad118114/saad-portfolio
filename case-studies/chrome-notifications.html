@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script>tailwind.config={theme:{extend:{colors:{"primary":"#005da3","primary-container":"#4ea4ff","on-primary":"#edf3ff","secondary-container":"#7edeff","on-secondary-container":"#004e61","surface-container-low":"#eef1f3","surface-container-lowest":"#ffffff","surface-container":"#e5e9eb","surface-container-high":"#dfe3e6","on-surface":"#2c2f31","on-surface-variant":"#595c5e","background":"#f5f7f9","outline-variant":"#abadaf"},fontFamily:{"headline":["Plus Jakarta Sans"],"body":["Manrope"]}}}}</script>
-  <style>body{font-family:'Manrope',sans-serif}h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}.glass-panel{background:rgba(255,255,255,0.45);backdrop-filter:blur(20px)}</style>
+  <style>body{font-family:'Manrope',sans-serif}h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}.glass-panel{background:rgba(255,255,255,0.45);backdrop-filter:blur(20px)}.pdlc-tline{position:absolute;left:31px;top:0;bottom:0;width:2px;background:rgba(171,173,175,0.22);border-radius:2px}.pdlc-tfill{position:absolute;left:31px;top:0;width:2px;background:#005da3;border-radius:2px;height:0;transition:height 0.08s linear}.pdlc-ghost{font-family:'Plus Jakarta Sans',sans-serif;font-size:7rem;font-weight:800;line-height:1;color:#005da3;opacity:0.055;position:absolute;right:-8px;top:-20px;pointer-events:none;user-select:none;letter-spacing:-0.04em}.pdlc-stage{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}.pdlc-stage.pdlc-vis{opacity:1;transform:translateY(0)}.pdlc-dot{width:22px;height:22px;border-radius:50%;background:#005da3;border:2.5px solid #005da3;box-shadow:0 0 0 4px rgba(0,93,163,0.12);position:absolute;left:21px}.pdlc-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:99px;background:#eef1f3;border:1px solid rgba(171,173,175,0.3);font-size:11px;font-weight:600;color:#595c5e}.pdlc-mcard{background:white;border:1px solid rgba(171,173,175,0.18);border-radius:12px;padding:16px 20px}@media(max-width:640px){.pdlc-ghost{font-size:4rem;right:-4px}}</style>
 </head><body class="bg-background text-on-surface">
 <nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,93,163,0.06)]">
   <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
@@ -19,7 +19,7 @@
   <h1 class="text-5xl font-extrabold tracking-tighter text-on-surface leading-tight mb-6">Chrome Notifications: +8pp CTR at 1M+ Scale</h1>
   <p class="text-xl text-on-surface-variant font-light leading-relaxed max-w-2xl mb-4">Google Merchants needed a higher-converting touchpoint beyond email and paid ads. Chrome Notifications offered the opportunity — but making them genuinely useful at 1M+ user scale required rethinking the product model, not just the technical implementation.</p>
   <span class="text-sm text-on-surface-variant font-semibold">Google · Senior Product Manager · Nov 2023 – Oct 2025</span></div>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">+8pp</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">CTR Improvement</div></div><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">+10pp</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Engagement Lift</div></div><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">1M+</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Users Reached</div></div><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">2023–25</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Google Senior PM</div></div></div>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16"><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">+8pp</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">CTR Improvement</div></div><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">+10pp</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Engagement Lift</div></div><div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm"><div class="text-3xl font-extrabold text-primary mb-1">1M+</div><div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Users Reached</div></div></div>
   <div class="space-y-8">
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Problem</h2>
 <p class="text-on-surface-variant leading-relaxed mb-5">Google Merchants needed a high-converting owned channel beyond paid ads and email. The opportunity was Chrome Notifications — a direct browser-native touchpoint reaching users who had already shown purchase intent. But the challenge wasn’t technical. It was product: how do you make notifications feel useful rather than intrusive at 1M+ user scale?</p>
@@ -145,7 +145,7 @@ function psReset(){
 </script></div>
     <div class="bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10"><h2 class="text-2xl font-extrabold mb-4">The Outcome</h2>
 <p class="text-on-surface-variant leading-relaxed mb-6">Shipping Chrome Notifications with Product Studio-generated assets moved engagement metrics at a scale most PMs never touch. The combination of AI-generated imagery and browser-native delivery created a significantly higher-signal touchpoint than standard email or display retargeting.</p>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
   <div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm">
     <div class="text-3xl font-extrabold text-primary mb-1">+8pp</div>
     <div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">CTR lift</div>
@@ -157,10 +157,6 @@ function psReset(){
   <div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm">
     <div class="text-3xl font-extrabold text-primary mb-1">1M+</div>
     <div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Users reached</div>
-  </div>
-  <div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/10 text-center shadow-sm">
-    <div class="text-3xl font-extrabold text-primary mb-1">2023</div>
-    <div class="text-xs text-on-surface-variant font-semibold uppercase tracking-wide">Google Senior PM</div>
   </div>
 </div>
 <div class="space-y-4">
@@ -195,32 +191,115 @@ function psReset(){
   </div>
 
   <div class="mt-12 rounded-2xl border border-primary/20 overflow-hidden" style="background:linear-gradient(135deg,#eef1f3 0%,#e8f0fb 100%)">
-    <div class="px-8 pt-7 pb-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
-        <div class="flex-1">
-          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-3" style="background:rgba(0,93,163,0.12);color:#005da3">
-            <span class="material-symbols-outlined" style="font-size:12px">schema</span>Product Development Lifecycle
-          </div>
-          <h3 class="text-lg font-extrabold text-on-surface mb-1" style="font-family:'Plus Jakarta Sans',sans-serif">See how this product was built end-to-end</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Discover &rarr; Define &rarr; Design &rarr; Build &rarr; Launch &rarr; Measure &mdash; all 6 stages documented with artifacts and metrics.</p>
-          <div class="flex items-center gap-1.5 flex-wrap">
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">search</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">assignment</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">edit</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">build</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">rocket_launch</span></div>
-            <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
-            <div style="width:28px;height:28px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:13px;color:#fff">bar_chart</span></div>
-            <span class="text-xs font-bold ml-2" style="color:#005da3">6 / 6 complete</span>
+    <div class="px-8 pt-8 pb-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase mb-3"><span class="material-symbols-outlined" style="font-size:13px">schema</span>Product Development Lifecycle</div>
+          <h2 class="text-2xl font-extrabold text-on-surface" style="font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-0.02em">Development Journey</h2>
+          <p class="text-sm text-on-surface-variant mt-1">All 6 stages documented — discovery through measurement.</p>
+        </div>
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">search</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">assignment</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">edit</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">build</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">rocket_launch</span></div>
+          <div style="height:2px;width:12px;background:#005da3;border-radius:2px"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#005da3;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">bar_chart</span></div>
+          <span class="text-xs font-bold ml-2" style="color:#005da3">6/6 complete</span>
+        </div>
+      </div>
+      <div class="relative" id="pdlc-wrap">
+        <div class="pdlc-tline"></div>
+        <div class="pdlc-tfill" id="pdlc-fill"></div>
+
+<footer class="bg-slate-50 border-t border-outline-variant/10 mt-8">
+  <div class="flex justify-between items-center px-8 py-8 max-w-7xl mx-auto">
+    <span class="font-bold text-slate-900">Saad Khan</span>
+    <span class="text-slate-500 text-sm">&#169; 2025 Product &amp; Platform Portfolio</span>
+  </div>
+</footer></body></html>        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:0ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">01</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">search</span>Discover</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Identifying the merchant channel gap</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">Google Merchants had strong paid acquisition but no high-converting owned channel once a user had already shown purchase intent. Email open rates were declining industry-wide. The question was whether a browser-native touchpoint could fill that gap &mdash; and whether Google had the infrastructure to make it work at merchant scale.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Merchant feedback synthesis</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Notification benchmark analysis</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Opportunity sizing</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">&lt;20%</div><div class="text-xs font-bold text-on-surface">Email open rate benchmark</div><div class="text-xs text-on-surface-variant mt-0.5">Industry average at the time</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Chrome Push</div><div class="text-xs font-bold text-on-surface">Target channel</div><div class="text-xs text-on-surface-variant mt-0.5">Browser-native, zero cost</div></div></div>
+            </div>
           </div>
         </div>
-        <a href="chrome-notifications-pdlc.html" class="inline-flex items-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-xl text-sm shrink-0 transition-all hover:-translate-y-0.5" style="box-shadow:0 4px 14px rgba(0,93,163,0.3)">
-          Explore the full journey<span class="material-symbols-outlined text-base">arrow_forward</span>
-        </a>
+        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:80ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">02</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">assignment</span>Define</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Scoping the problem and the user</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">The core problem was reframed from &ldquo;build a notification system&rdquo; to &ldquo;make product moments feel relevant to the right user at the right time.&rdquo; Target segment: active Google Merchants with purchase-intent signals already in the system. Success was defined as measurable CTR improvement over the email baseline.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Problem statement doc</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>User segment definition</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Success criteria</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Active Merchants</div><div class="text-xs font-bold text-on-surface">Target segment</div><div class="text-xs text-on-surface-variant mt-0.5">Google Merchant Center users</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">CTR lift</div><div class="text-xs font-bold text-on-surface">Primary success metric</div><div class="text-xs text-on-surface-variant mt-0.5">vs. email baseline</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:160ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">03</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">edit</span>Design</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Architecting the AI-native solution</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">The core insight: notification value comes from visual relevance, not frequency. Pairing Product Studio&rsquo;s GenAI image pipeline with Chrome notification delivery let merchants push studio-quality imagery without a creative team. The key design decision: auto-select the best-performing Product Studio asset as the notification image.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Solution architecture</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>User flow diagrams</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Asset auto-selection logic</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Product Studio</div><div class="text-xs font-bold text-on-surface">Integration surface</div><div class="text-xs text-on-surface-variant mt-0.5">Google GenAI image pipeline</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Auto-select</div><div class="text-xs font-bold text-on-surface">Key UX decision</div><div class="text-xs text-on-surface-variant mt-0.5">Best-performing variant surfaced</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:240ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">04</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">build</span>Build</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Cross-functional execution</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">Led delivery across three separate engineering orgs: Merchant Center, Product Studio, and Chrome notification infrastructure &mdash; each with independent roadmaps and release cycles. Managed feature prioritization, scoped the integration surface, and maintained release criteria as each dependency landed. Ran iterative reviews with a pilot merchant cohort throughout.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Technical requirements</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Cross-team RACI</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Pilot merchant feedback</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">3 teams</div><div class="text-xs font-bold text-on-surface">Engineering orgs coordinated</div><div class="text-xs text-on-surface-variant mt-0.5">Merchant Center, Product Studio, Chrome</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Iterative</div><div class="text-xs font-bold text-on-surface">Delivery model</div><div class="text-xs text-on-surface-variant mt-0.5">Pilot cohort feedback loop</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pdlc-stage pl-14 pt-10 pb-2" style="position:relative;transition-delay:320ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">05</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">rocket_launch</span>Launch</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Shipping at merchant scale</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">Shipped as a core feature of Product Studio inside Google Merchant Center. The end-to-end workflow: merchant generates AI product imagery &rarr; image auto-selected based on predicted performance &rarr; pushed as a Chrome notification to users who had shown purchase intent. No creative team or photo shoot required.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Launch documentation</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Merchant rollout plan</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Internal announcement</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Product Studio</div><div class="text-xs font-bold text-on-surface">Shipped inside</div><div class="text-xs text-on-surface-variant mt-0.5">Google Merchant Center</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">1M+ users</div><div class="text-xs font-bold text-on-surface">Reach at launch</div><div class="text-xs text-on-surface-variant mt-0.5">Full Merchant Center base</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pdlc-stage pl-14 pt-10 pb-8" style="position:relative;transition-delay:400ms">
+          <div class="pdlc-dot" style="top:46px"></div>
+          <div class="relative overflow-hidden">
+            <div class="pdlc-ghost">06</div>
+            <div class="bg-white rounded-2xl p-7 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+              <div class="flex flex-wrap items-center gap-3 mb-3"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3"><span class="material-symbols-outlined" style="font-size:13px">bar_chart</span>Measure</span><span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span></div>
+              <h3 class="text-lg font-extrabold text-on-surface mb-2" style="font-family:'Plus Jakarta Sans',sans-serif">Validating impact and scaling the playbook</h3>
+              <p class="text-on-surface-variant leading-relaxed mb-5" style="font-size:14px">Post-launch measurement confirmed the hypothesis: AI-generated product imagery in browser-native notifications significantly outperformed standard email on both CTR and engagement. The GenAI + push delivery pattern was documented as a reusable playbook adopted across other Merchant Center notification surfaces.</p>
+              <div class="flex flex-wrap gap-2 mb-5"><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Post-launch metrics report</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>A/B test results</span><span class="pdlc-chip"><span class="material-symbols-outlined" style="font-size:12px;color:#005da3">description</span>Playbook documentation</span></div>
+              <div class="grid grid-cols-2 gap-3"><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">+8pp</div><div class="text-xs font-bold text-on-surface">CTR improvement</div><div class="text-xs text-on-surface-variant mt-0.5">vs. email baseline</div></div><div class="pdlc-mcard"><div class="text-xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">+10pp</div><div class="text-xs font-bold text-on-surface">Engagement lift</div><div class="text-xs text-on-surface-variant mt-0.5">Click-to-action rate</div></div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -230,4 +309,15 @@ function psReset(){
     <span class="font-bold text-slate-900">Saad Khan</span>
     <span class="text-slate-500 text-sm">&#169; 2025 Product &amp; Platform Portfolio</span>
   </div>
-</footer></body></html>
+</footer>
+<script>
+(function(){setTimeout(function(){var n=document.getElementById('ps-notif');if(n)n.style.transform='translateX(0)';},400);})();
+function psViewAssets(){var n=document.getElementById('ps-notif');if(n){n.style.transition='transform .35s ease,opacity .35s ease';n.style.transform='translateX(420px)';n.style.opacity='0';}var row=document.getElementById('ps-assets');if(!row)return;row.style.display='flex';[1,2,3].forEach(function(i){setTimeout(function(){var c=document.getElementById('psa'+i);if(c){c.style.transform='translateX(0)';c.style.opacity='1';}},i*160);});}
+function psDismiss(){var n=document.getElementById('ps-notif');if(n){n.style.transition='transform .3s ease,opacity .3s ease';n.style.transform='translateX(420px)';n.style.opacity='0';}}
+function psReset(){var n=document.getElementById('ps-notif');if(n){n.style.transition='none';n.style.transform='translateX(420px)';n.style.opacity='1';}var row=document.getElementById('ps-assets');if(row)row.style.display='none';[1,2,3].forEach(function(i){var c=document.getElementById('psa'+i);if(c){c.style.transform='translateX(500px)';c.style.opacity='0';}});setTimeout(function(){if(n){n.style.transition='transform .5s cubic-bezier(.34,1.1,.64,1)';n.style.transform='translateX(0)';}},80);}
+var pdlcObs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('pdlc-vis');});},{threshold:0.1});
+document.querySelectorAll('.pdlc-stage').forEach(function(el){pdlcObs.observe(el);});
+function updatePdlcLine(){var w=document.getElementById('pdlc-wrap'),f=document.getElementById('pdlc-fill');if(!w||!f)return;var r=w.getBoundingClientRect(),s=Math.max(0,window.innerHeight*0.65-r.top),p=Math.min(100,Math.max(0,(s/r.height)*100));f.style.height=p+'%';}
+window.addEventListener('scroll',updatePdlcLine,{passive:true});updatePdlcLine();
+</script>
+</body></html>
