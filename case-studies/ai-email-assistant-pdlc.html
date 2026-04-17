@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Development Lifecycle — AI Email Assistant | Saad Khan</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script>tailwind.config={theme:{extend:{colors:{"primary":"#005da3","primary-container":"#4ea4ff","on-primary":"#edf3ff","secondary-container":"#7edeff","on-secondary-container":"#004e61","surface-container-low":"#eef1f3","surface-container-lowest":"#ffffff","surface-container":"#e5e9eb","on-surface":"#2c2f31","on-surface-variant":"#595c5e","background":"#f5f7f9","outline-variant":"#abadaf"},fontFamily:{"headline":["Plus Jakarta Sans"],"body":["Manrope"]}}}}</script>
+  <style>
+    body{font-family:'Manrope',sans-serif}h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif}
+    .sticky-bar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(171,173,175,0.2)}
+    .tline{position:absolute;left:31px;top:0;bottom:0;width:2px;background:rgba(171,173,175,0.22);border-radius:2px}
+    .tline-fill{position:absolute;left:31px;top:0;width:2px;background:#005da3;border-radius:2px;height:0;transition:height 0.08s linear}
+    .ghost-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:7rem;font-weight:800;line-height:1;color:#005da3;opacity:0.055;position:absolute;right:-8px;top:-20px;pointer-events:none;user-select:none;letter-spacing:-0.04em}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .stage-dot{width:22px;height:22px;border-radius:50%;flex-shrink:0;border:2.5px solid;transition:all 0.3s;position:absolute;left:21px}
+    .stage-dot.done{background:#005da3;border-color:#005da3;box-shadow:0 0 0 4px rgba(0,93,163,0.12)}
+    .strip-node{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.22s;text-decoration:none;border:2px solid transparent}
+    .strip-node.done{background:#005da3}.strip-node.done:hover{transform:scale(1.1);background:#004a85}
+    .artifact-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:99px;background:#eef1f3;border:1px solid rgba(171,173,175,0.3);font-size:11px;font-weight:600;color:#595c5e}
+    .metric-card{background:white;border:1px solid rgba(171,173,175,0.18);border-radius:12px;padding:16px 20px}
+    .cta-btn{transition:all 0.2s ease}.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,93,163,0.28)}
+    @media(max-width:640px){.ghost-num{font-size:4.5rem;right:-4px}}
+  </style>
+</head>
+<body class="bg-background text-on-surface">
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,93,163,0.06)]">
+  <div class="flex justify-between items-center px-8 py-4 max-w-5xl mx-auto">
+    <a href="../index.html" class="text-2xl font-bold tracking-tighter text-slate-900">SK.</a>
+    <a href="ai-email-assistant.html" class="flex items-center gap-2 text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors">
+      <span class="material-symbols-outlined text-base">arrow_back</span>Back to Case Study
+    </a>
+  </div>
+</nav>
+<section class="pt-32 pb-12 px-6 max-w-5xl mx-auto">
+  <div class="reveal">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase mb-6">
+      <span class="material-symbols-outlined" style="font-size:13px">schema</span>Product Development Lifecycle
+    </div>
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight leading-none mb-5" style="letter-spacing:-0.03em">
+      AI Email Assistant<br/><span class="text-primary">Development Journey</span>
+    </h1>
+    <p class="text-lg text-on-surface-variant font-light max-w-2xl leading-relaxed">
+      A full lifecycle breakdown — from spotting a knowledge retrieval problem inside Google's sales org to shipping an autonomous AI agent that scaled from 50 users to 3,000+ in weeks.
+    </p>
+    <div class="flex flex-wrap items-center gap-3 mt-6 text-sm">
+      <span class="text-on-surface-variant font-semibold">Google &middot; Senior PM &middot; Nov 2023&ndash;Oct 2025</span>
+      <span class="w-1 h-1 rounded-full bg-outline-variant inline-block"></span>
+      <span class="flex items-center gap-1 font-bold text-primary">
+        <span class="material-symbols-outlined" style="font-size:15px">verified</span>All 6 stages complete
+      </span>
+    </div>
+  </div>
+</section>
+<div class="sticky-bar px-6 py-3">
+  <div class="max-w-5xl mx-auto flex items-center gap-2 overflow-x-auto">
+    <span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant shrink-0 mr-2">Lifecycle</span>
+    <a href="#s0" class="strip-node done" title="Discover"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">search</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s1" class="strip-node done" title="Define"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">assignment</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s2" class="strip-node done" title="Design"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">edit</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s3" class="strip-node done" title="Build"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">build</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s4" class="strip-node done" title="Launch"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">rocket_launch</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s5" class="strip-node done" title="Measure"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">bar_chart</span></a>
+    <span class="text-xs font-bold text-primary ml-3 shrink-0">6 / 6 complete</span>
+  </div>
+</div>
+<main class="px-6 max-w-5xl mx-auto pb-24 mt-10">
+  <div class="relative" id="tlwrap">
+    <div class="tline"></div>
+    <div class="tline-fill" id="tfill"></div>
+    <div id="s0" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:0ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">01</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">search</span>Discover
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Observing the knowledge retrieval problem</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">Google&rsquo;s enterprise sales team was spending 4+ hours per week manually researching and drafting responses to repetitive client queries. The information existed internally &mdash; but was siloed across docs, slides, and email threads. The root problem wasn&rsquo;t content quality; it was retrieval latency. Every hour spent searching was an hour not spent selling.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Team pain point interviews</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Time-on-task analysis</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Query categorization</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">4+ hrs/week</div><div class="text-xs font-bold text-on-surface">Time lost per person</div><div class="text-xs text-on-surface-variant mt-1">On repetitive query responses</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Retrieval gap</div><div class="text-xs font-bold text-on-surface">Root cause identified</div><div class="text-xs text-on-surface-variant mt-1">Not content quality — access speed</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s1" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:80ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">02</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">assignment</span>Define
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Scoping the pilot and defining success</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">A 50-person sales team was selected as the initial pilot segment &mdash; small enough to move fast, large enough to generate statistically meaningful signal. Success was defined as measurable weekly time savings per person, not just adoption. The core hypothesis: if an AI agent could retrieve and draft in under 30 seconds what took a human 20 minutes, the behaviour change would be self-sustaining.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Pilot scope document</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Success metric definition</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Hypothesis statement</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">50 people</div><div class="text-xs font-bold text-on-surface">Pilot segment size</div><div class="text-xs text-on-surface-variant mt-1">Enterprise sales team</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">hrs/week saved</div><div class="text-xs font-bold text-on-surface">Primary success metric</div><div class="text-xs text-on-surface-variant mt-1">Per person, measurable</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s2" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:160ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">03</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">edit</span>Design
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Designing a fully autonomous Gmail agent</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">The system was designed as a fully autonomous loop: inbound email triggers the agent &rarr; Gemini reasons over an internal knowledge base using a Think tool &rarr; a contextual draft is generated &rarr; presented for human approval &rarr; sent. The critical design constraint was human-in-the-loop approval before sending &mdash; preserving trust while removing the research burden entirely.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Agent architecture doc</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Knowledge base structure</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Approval flow design</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Gemini + Gmail</div><div class="text-xs font-bold text-on-surface">Core stack</div><div class="text-xs text-on-surface-variant mt-1">Agent + API + knowledge base</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Human approval</div><div class="text-xs font-bold text-on-surface">Key design constraint</div><div class="text-xs text-on-surface-variant mt-1">Before every send</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s3" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:240ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">04</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">build</span>Build
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Building and instrumenting the agent pipeline</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">Built the agent pipeline using Gemini, Gmail API, and an internal sales knowledge base. A key build decision was to instrument every interaction for behavioral data capture &mdash; not just for product improvement, but because this data was earmarked to feed Gemini&rsquo;s internal personalization layer. Usage tracking was a first-class requirement, not an afterthought.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Technical specification</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Instrumentation plan</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Knowledge base ingestion</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Gmail API</div><div class="text-xs font-bold text-on-surface">Integration layer</div><div class="text-xs text-on-surface-variant mt-1">Trigger + send pipeline</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Instrumented</div><div class="text-xs font-bold text-on-surface">Data capture</div><div class="text-xs text-on-surface-variant mt-1">Feeds Gemini personalization</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s4" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:320ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">05</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">rocket_launch</span>Launch
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Piloting and scaling through word of mouth</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">Launched to the 50-person sales pilot with no formal announcement. Within two weeks, users were sharing the tool across the wider org without any prompting. The product grew not through a rollout plan but through word-of-mouth &mdash; a signal that time savings were immediately obvious and the tool was genuinely changing how people worked day-to-day.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Pilot launch brief</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Onboarding materials</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Feedback collection</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">50 users</div><div class="text-xs font-bold text-on-surface">Pilot launch size</div><div class="text-xs text-on-surface-variant mt-1">Enterprise sales team</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Word of mouth</div><div class="text-xs font-bold text-on-surface">Growth driver</div><div class="text-xs text-on-surface-variant mt-1">No formal rollout needed</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s5" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:400ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">06</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">bar_chart</span>Measure
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">60x scale, 4 hrs saved, and a Gemini contribution</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">The pilot scaled 60x from 50 to 3,000+ internal users, driven entirely by organic adoption. Each user saved an average of 4 hours per week &mdash; time previously spent on information retrieval. The behavioral data captured from this deployment was fed directly into Gemini&rsquo;s internal personalization layer, making the project&rsquo;s impact extend well beyond the tool itself.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Growth analysis</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Time savings report</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Gemini data contribution</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">3,000+ users</div><div class="text-xs font-bold text-on-surface">Scale achieved</div><div class="text-xs text-on-surface-variant mt-1">60x from 50-person pilot</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">4 hrs/week</div><div class="text-xs font-bold text-on-surface">Saved per person</div><div class="text-xs text-on-surface-variant mt-1">Contributed to Gemini launch</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal mt-20 pt-10 border-t border-outline-variant/20">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Full Case Study</div>
+        <h3 class="text-2xl font-extrabold text-on-surface">Read the complete narrative</h3>
+        <p class="text-on-surface-variant mt-1 text-sm">The problem, the approach, and final outcomes in full.</p>
+      </div>
+      <a href="ai-email-assistant.html" class="cta-btn inline-flex items-center gap-3 bg-primary text-white font-bold px-8 py-4 rounded-2xl text-sm shrink-0">
+        View Case Study<span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</main>
+<footer class="bg-slate-50 border-t border-outline-variant/10 mt-8">
+  <div class="flex justify-between items-center px-8 py-8 max-w-5xl mx-auto">
+    <span class="font-bold text-slate-900">Saad Khan</span>
+    <span class="text-slate-500 text-sm">&#169; 2025 Product &amp; Platform Portfolio</span>
+  </div>
+</footer>
+<script>
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+function updateLine(){var w=document.getElementById('tlwrap'),f=document.getElementById('tfill');if(!w||!f)return;var r=w.getBoundingClientRect(),s=Math.max(0,window.innerHeight*0.65-r.top),p=Math.min(100,Math.max(0,(s/r.height)*100));f.style.height=p+'%';}
+window.addEventListener('scroll',updateLine,{passive:true});updateLine();
+</script>
+</body>
+</html>

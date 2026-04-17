@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Development Lifecycle — Chrome Notifications | Saad Khan</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script>tailwind.config={theme:{extend:{colors:{"primary":"#005da3","primary-container":"#4ea4ff","on-primary":"#edf3ff","secondary-container":"#7edeff","on-secondary-container":"#004e61","surface-container-low":"#eef1f3","surface-container-lowest":"#ffffff","surface-container":"#e5e9eb","on-surface":"#2c2f31","on-surface-variant":"#595c5e","background":"#f5f7f9","outline-variant":"#abadaf"},fontFamily:{"headline":["Plus Jakarta Sans"],"body":["Manrope"]}}}}</script>
+  <style>
+    body{font-family:'Manrope',sans-serif}h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif}
+    .sticky-bar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(171,173,175,0.2)}
+    .tline{position:absolute;left:31px;top:0;bottom:0;width:2px;background:rgba(171,173,175,0.22);border-radius:2px}
+    .tline-fill{position:absolute;left:31px;top:0;width:2px;background:#005da3;border-radius:2px;height:0;transition:height 0.08s linear}
+    .ghost-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:7rem;font-weight:800;line-height:1;color:#005da3;opacity:0.055;position:absolute;right:-8px;top:-20px;pointer-events:none;user-select:none;letter-spacing:-0.04em}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .stage-dot{width:22px;height:22px;border-radius:50%;flex-shrink:0;border:2.5px solid;transition:all 0.3s;position:absolute;left:21px}
+    .stage-dot.done{background:#005da3;border-color:#005da3;box-shadow:0 0 0 4px rgba(0,93,163,0.12)}
+    .strip-node{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.22s;text-decoration:none;border:2px solid transparent}
+    .strip-node.done{background:#005da3}.strip-node.done:hover{transform:scale(1.1);background:#004a85}
+    .artifact-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:99px;background:#eef1f3;border:1px solid rgba(171,173,175,0.3);font-size:11px;font-weight:600;color:#595c5e}
+    .metric-card{background:white;border:1px solid rgba(171,173,175,0.18);border-radius:12px;padding:16px 20px}
+    .cta-btn{transition:all 0.2s ease}.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,93,163,0.28)}
+    @media(max-width:640px){.ghost-num{font-size:4.5rem;right:-4px}}
+  </style>
+</head>
+<body class="bg-background text-on-surface">
+<nav class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,93,163,0.06)]">
+  <div class="flex justify-between items-center px-8 py-4 max-w-5xl mx-auto">
+    <a href="../index.html" class="text-2xl font-bold tracking-tighter text-slate-900">SK.</a>
+    <a href="chrome-notifications.html" class="flex items-center gap-2 text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors">
+      <span class="material-symbols-outlined text-base">arrow_back</span>Back to Case Study
+    </a>
+  </div>
+</nav>
+<section class="pt-32 pb-12 px-6 max-w-5xl mx-auto">
+  <div class="reveal">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase mb-6">
+      <span class="material-symbols-outlined" style="font-size:13px">schema</span>Product Development Lifecycle
+    </div>
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight leading-none mb-5" style="letter-spacing:-0.03em">
+      Chrome Notifications<br/><span class="text-primary">Development Journey</span>
+    </h1>
+    <p class="text-lg text-on-surface-variant font-light max-w-2xl leading-relaxed">
+      A full lifecycle breakdown — from identifying the merchant channel gap to shipping a GenAI-powered notification product at 1M+ user scale inside Google Merchant Center.
+    </p>
+    <div class="flex flex-wrap items-center gap-3 mt-6 text-sm">
+      <span class="text-on-surface-variant font-semibold">Google &middot; Senior PM &middot; Nov 2023&ndash;Oct 2025</span>
+      <span class="w-1 h-1 rounded-full bg-outline-variant inline-block"></span>
+      <span class="flex items-center gap-1 font-bold text-primary">
+        <span class="material-symbols-outlined" style="font-size:15px">verified</span>All 6 stages complete
+      </span>
+    </div>
+  </div>
+</section>
+<div class="sticky-bar px-6 py-3">
+  <div class="max-w-5xl mx-auto flex items-center gap-2 overflow-x-auto">
+    <span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant shrink-0 mr-2">Lifecycle</span>
+    <a href="#s0" class="strip-node done" title="Discover"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">search</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s1" class="strip-node done" title="Define"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">assignment</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s2" class="strip-node done" title="Design"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">edit</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s3" class="strip-node done" title="Build"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">build</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s4" class="strip-node done" title="Launch"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">rocket_launch</span></a>
+    <div style="height:2px;flex:1;min-width:10px;max-width:40px;background:#005da3;border-radius:2px"></div>
+    <a href="#s5" class="strip-node done" title="Measure"><span class="material-symbols-outlined" style="font-size:15px;color:#fff">bar_chart</span></a>
+    <span class="text-xs font-bold text-primary ml-3 shrink-0">6 / 6 complete</span>
+  </div>
+</div>
+<main class="px-6 max-w-5xl mx-auto pb-24 mt-10">
+  <div class="relative" id="tlwrap">
+    <div class="tline"></div>
+    <div class="tline-fill" id="tfill"></div>
+    <div id="s0" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:0ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">01</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">search</span>Discover
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Identifying the merchant channel gap</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">Google Merchants had strong paid acquisition but no high-converting owned channel once a user had already shown purchase intent. Email open rates were declining industry-wide. The question was whether a browser-native touchpoint could fill that gap &mdash; and whether Google had the infrastructure to make it work at merchant scale.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Merchant feedback synthesis</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Notification benchmark analysis</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Opportunity sizing</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">&lt;20%</div><div class="text-xs font-bold text-on-surface">Email open rate benchmark</div><div class="text-xs text-on-surface-variant mt-1">Industry average at the time</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Chrome Push</div><div class="text-xs font-bold text-on-surface">Target channel</div><div class="text-xs text-on-surface-variant mt-1">Browser-native, zero cost to merchant</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s1" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:80ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">02</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">assignment</span>Define
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Scoping the problem and the user</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">The core problem was reframed from &ldquo;build a notification system&rdquo; to &ldquo;make product moments feel relevant to the right user at the right time.&rdquo; Target segment was narrowed to active Google Merchants already using Merchant Center &mdash; users who had purchase-intent signals already in the system. Success was defined as measurable CTR improvement over the email baseline.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Problem statement doc</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>User segment definition</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Success criteria</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Active Merchants</div><div class="text-xs font-bold text-on-surface">Target segment</div><div class="text-xs text-on-surface-variant mt-1">Google Merchant Center users</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">CTR lift</div><div class="text-xs font-bold text-on-surface">Primary success metric</div><div class="text-xs text-on-surface-variant mt-1">vs. email baseline</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s2" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:160ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">03</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">edit</span>Design
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Architecting the AI-native solution</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">The core insight: notification value comes from visual relevance, not frequency. Pairing Product Studio&rsquo;s generative AI image pipeline with Chrome notification delivery let merchants push studio-quality product imagery without a creative team or photo shoot. The key design decision was to auto-select the best-performing asset variant from Product Studio and use it as the notification image.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Solution architecture</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>User flow diagrams</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Asset auto-selection logic</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Product Studio</div><div class="text-xs font-bold text-on-surface">Integration surface</div><div class="text-xs text-on-surface-variant mt-1">Google GenAI image pipeline</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Auto-select</div><div class="text-xs font-bold text-on-surface">Key UX decision</div><div class="text-xs text-on-surface-variant mt-1">Best-performing variant surfaced</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s3" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:240ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">04</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">build</span>Build
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Cross-functional execution</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">Led delivery across three separate engineering orgs: Merchant Center, Product Studio, and Chrome notification infrastructure &mdash; each with independent roadmaps and release cycles. Managed feature prioritization across teams, scoped the integration surface, and maintained release criteria as each dependency landed. Ran iterative reviews with a pilot merchant cohort throughout.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Technical requirements</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Cross-team RACI</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Pilot merchant feedback</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">3 teams</div><div class="text-xs font-bold text-on-surface">Engineering orgs coordinated</div><div class="text-xs text-on-surface-variant mt-1">Merchant Center, Product Studio, Chrome</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Iterative</div><div class="text-xs font-bold text-on-surface">Delivery model</div><div class="text-xs text-on-surface-variant mt-1">Pilot cohort feedback loop</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s4" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:320ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">05</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">rocket_launch</span>Launch
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Shipping at merchant scale</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">Shipped as a core feature of Product Studio inside Google Merchant Center. The end-to-end workflow: merchant generates AI product imagery in Product Studio &rarr; image is auto-selected based on predicted performance &rarr; pushed as a Chrome notification to users who had shown purchase intent. No creative team or photo shoot required. Launched to the full Merchant Center user base.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Launch documentation</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Merchant rollout plan</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Internal announcement</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">Product Studio</div><div class="text-xs font-bold text-on-surface">Shipped inside</div><div class="text-xs text-on-surface-variant mt-1">Google Merchant Center</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">1M+ users</div><div class="text-xs font-bold text-on-surface">Reach at launch</div><div class="text-xs text-on-surface-variant mt-1">Full Merchant Center base</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="s5" class="reveal pl-14 pt-12 pb-4" style="position:relative;transition-delay:400ms">
+      <div class="stage-dot done" style="top:54px"></div>
+      <div class="relative overflow-hidden">
+        <div class="ghost-num">06</div>
+        <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/10 shadow-sm" style="border-left:3px solid #005da3">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(0,93,163,0.1);color:#005da3">
+              <span class="material-symbols-outlined" style="font-size:13px">bar_chart</span>Measure
+            </span>
+            <span class="flex items-center gap-1 text-xs font-bold" style="color:#005da3"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span>Complete</span>
+          </div>
+          <h2 class="text-xl font-extrabold text-on-surface mb-3" style="letter-spacing:-0.01em">Validating impact and scaling the playbook</h2>
+          <p class="text-on-surface-variant leading-relaxed mb-6 max-w-2xl" style="font-size:15px">Post-launch measurement confirmed the hypothesis: AI-generated product imagery in browser-native notifications significantly outperformed standard email on both CTR and engagement. The GenAI + push delivery pattern was documented as a reusable playbook and adopted across other Merchant Center notification surfaces beyond Chrome.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Post-launch metrics report</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>A/B test results</span>
+            <span class="artifact-chip"><span class="material-symbols-outlined" style="font-size:13px;color:#005da3">description</span>Playbook documentation</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">+8pp</div><div class="text-xs font-bold text-on-surface">CTR improvement</div><div class="text-xs text-on-surface-variant mt-1">vs. email baseline</div></div>
+            <div class="metric-card"><div class="text-2xl font-extrabold mb-1" style="color:#005da3;font-family:'Plus Jakarta Sans',sans-serif">+10pp</div><div class="text-xs font-bold text-on-surface">Engagement lift</div><div class="text-xs text-on-surface-variant mt-1">Click-to-action rate</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal mt-20 pt-10 border-t border-outline-variant/20">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Full Case Study</div>
+        <h3 class="text-2xl font-extrabold text-on-surface">Read the complete narrative</h3>
+        <p class="text-on-surface-variant mt-1 text-sm">The problem, the approach, and final outcomes in full.</p>
+      </div>
+      <a href="chrome-notifications.html" class="cta-btn inline-flex items-center gap-3 bg-primary text-white font-bold px-8 py-4 rounded-2xl text-sm shrink-0">
+        View Case Study<span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</main>
+<footer class="bg-slate-50 border-t border-outline-variant/10 mt-8">
+  <div class="flex justify-between items-center px-8 py-8 max-w-5xl mx-auto">
+    <span class="font-bold text-slate-900">Saad Khan</span>
+    <span class="text-slate-500 text-sm">&#169; 2025 Product &amp; Platform Portfolio</span>
+  </div>
+</footer>
+<script>
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+function updateLine(){var w=document.getElementById('tlwrap'),f=document.getElementById('tfill');if(!w||!f)return;var r=w.getBoundingClientRect(),s=Math.max(0,window.innerHeight*0.65-r.top),p=Math.min(100,Math.max(0,(s/r.height)*100));f.style.height=p+'%';}
+window.addEventListener('scroll',updateLine,{passive:true});updateLine();
+</script>
+</body>
+</html>
